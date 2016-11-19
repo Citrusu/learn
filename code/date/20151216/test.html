@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>basic-demo</title>
+<script src="template.js"></script>
+</head>
+
+<body>
+<div id="content"></div>
+<script id="test" type="text/html">
+
+
+<h1>基本例子</h1>
+<ul>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+</ul>
+
+
+</script>
+
+<script>
+var data = {
+  
+};
+var html = template('test', data);
+document.getElementById('content').innerHTML = html;
+</script>
+</body>
+</html>

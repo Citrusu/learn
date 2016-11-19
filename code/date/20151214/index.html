@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+    <section id="register">
+        <h1>注册帐号</h1>
+        <form action="">
+            <!--用户名-->
+            <div class="box">
+                <label for="user_name" class="item">用户名</label>
+                <div class="new_text_box">
+                    <input type="text" id="user_name" class="new_text" name="user-name" placeholder="字母和数字" required>
+                </div>
+                <div class="info" id="user_name_info">
+
+                </div>
+            </div>
+            <!--密码-->
+            <div class="box">
+                <label for="passwordd" class="item">密码</label>
+                <div class="new_text_box">
+                    <input type="password" id="passwordd" class="new_text" name="password" placeholder="6位数以上字母加数字" required>
+                </div>
+                <div class="info" id="password_info">
+
+                </div>
+            </div>
+            <div class="box">
+                <label for="password_confirm" class="item">密码确认</label>
+                <div class="new_text_box">
+                    <input type="password" id="password_confirm" class="new_text" name="password-confirm" placeholder="重复上面的密码" required>
+                </div>
+                <div class="info" id="password_confirm_info">
+
+                </div>
+            </div>
+            <!--电子邮箱-->
+            <div class="box">
+                <label for="email" class="item">电子邮箱</label>
+                <div class="new_text_box">
+                    <input type="email" id="email" class="new_text" placeholder="请输入您的电子邮箱" required>
+                </div>
+            </div>
+            <!--年龄-->
+            <div class="box">
+                <label for="age" class="item">年龄</label>
+                <div class="new_text_box">
+                    <input type="text" id="age" class="new_text" placeholder="未满18岁禁止注册" required>
+                </div>
+                <div class="info" id="age_input_info">
+
+                </div>
+            </div>
+            <!--性别-->
+            <div class="box">
+                <div class="item">性别</div>
+                <div class="new_text_box ">
+                    男<input type="radio" name="sex" value="sex-man" >
+                    女<input type="radio" name="sex" value="sex-women">
+                </div>
+                <div class="info">
+
+                </div>
+            </div>
+            <!--兴趣爱好-->
+            <div class="box">
+                <div class="item">兴趣爱好</div>
+                <div class="new_text_box">
+                    跑步<input type="checkbox" name="intresting" >
+                    游泳<input type="checkbox" name="intresting" >
+                    单车<input type="checkbox" name="intresting" >
+                    篮球<input type="checkbox" name="intresting" >
+                    足球<input type="checkbox" name="intresting" >
+                    其它<input type="text" name="intresting">
+                </div>
+            </div>
+            <!--验证码-->
+            <div class="box">
+                <label for="check-code" class="item">验证码</label>
+                <div class="new_text_box" id="check_code_input">
+                    <input type="text" id="check-code" class="new_text" placeholder="请输入右边的结果" required>
+                </div>
+                <div class="check_qst">
+                    <span id="check-code1">2</span>+
+                    <span id="check-code2">0</span>=?
+                </div>
+                <div class="info" id="check_code_info">
+
+                </div>
+            </div>
+            <!--提交按钮-->
+            <div>
+                <div class="item"></div>
+                <input type="submit" value="提交注册" id="submit_btn">
+            </div>
+
+        </form>
+    </section>
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

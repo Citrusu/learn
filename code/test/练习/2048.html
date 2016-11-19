@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2048</title>
+	<style type="text/css">
+		#backborder{
+			width:400px;
+			height: 400px;
+			border:3px solid #333;
+		}
+		.eve{
+			background: #E8F789;
+			width:100px;
+			height: 100px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			//键盘事件
+			document.onkeydown=function(e){
+				var en;
+				if(window.event){
+					en=e.keyCode;
+				}else if(e.which){
+					en=e.which;
+				};
+				//var e=e.which||window.event.keyCode;
+				newbox();
+			};
+		};
+		
+		//定义初始方块
+		var eve=[
+			//x,y,数值 
+			[1,1,2],
+			[2,2,2],
+		];
+		var x;
+		var y;
+		
+		function newbox(){
+			var bg=document.getElementById("backborder");
+			var eve=document.createElement("div");
+			//eve.setAttribute("class")="eve";
+			bg.appendClass(eve);
+		}
+	</script>
+</head>
+<body>
+	<div id="backborder">
+		<!-- <div class="eve">
+			
+		</div> -->
+	</div>
+</body>
+</html>

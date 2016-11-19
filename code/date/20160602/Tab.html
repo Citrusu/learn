@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS_Tab</title>
+  <style type="text/css">
+    ul{
+        list-style: none;
+    }
+    .nav-content > li:not(:first-child){
+        display: none;
+    }
+    .current{
+        color: #f00;
+    }
+  </style>
+</head>
+<body>
+    <ul class="nav-meum" id="navMeum">
+        <li class="current">菜单一</li>
+        <li>菜单二</li>
+        <li>菜单三</li>
+    </ul>
+    <ul class="nav-content" id=navContent>
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+    </ul>
+    <script type="text/javascript">
+        window.onload=function(){
+            var navMuem = document.getElementById('navMeum');
+            var muemLi = navMuem.getElementsByTagName('li');
+            var navContent = document.getElementById('navContent');
+            var contentLi = navContent.getElementsByTagName('li');
+            var index;
+            //获取当前index
+            function indexValue(index,obj){
+                for(var i=0; i < obj.length; i++){
+                    if(obj[i] == index){
+                        return i;
+                    }
+                }
+            }
+            for(var i=0; i < muemLi.length; i++){
+                muemLi[i].onclick=function(){
+                    index = indexValue(this,muemLi);
+                    for(var n = 0; n < muemLi.length; n++){
+                        muemLi[n].className = (n == index)?'current':'';
+                    }
+                    for(var m=0; m < contentLi.length; m++){
+                        contentLi[m].style.display = (m == index)?'block':'none';
+                    }
+                }
+            }
+        }
+    </script>
+
+    
+</body>
+</html>

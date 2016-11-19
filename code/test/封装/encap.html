@@ -1,0 +1,80 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+<!--
+/*
+//封装
+function person(name,agei,sal){
+	this.name=name;//公开的属性
+	var age=agei;//私有的属性
+	var salary=sal;//私有的属性
+
+	//在类中如何定义公开方法（特权方法），私有方法（内部方法）
+	//如果我们希望操作私有的属性，刚可用公开的方法实现
+	this.show=function(){
+		window.alert(age+' '+salary);
+	}
+	//私有方法，可以访问对象的属性
+	function show2(){
+		window.alert(age+' '+salary);
+	}
+
+}
+
+	var p1=new person('zy',20,5000);
+	window.alert(p1.name+' '+p1.age+' '+p1.salary);
+	p1.show();//这个可以
+	p1.show2();//不能在类的外部去使用私有的方法
+*/
+
+/*
+//prototype 给所有对象添加方法，但是这种方式不能去访问类的私有变量和方法
+	function person(){
+		this.name="acb";
+		var age=20;
+	}
+	person.prototype.fun1=function(){
+		window.alert(this.name);//ok
+		//window.alert(age);//no ok
+	}
+
+	var p1=new person();
+	p1.fun1();
+*/
+	
+/*
+//继承--解决代码冗余
+//抽象出一个学生类，（即把中学生和小学生的共性取出）
+	function Stu(name,age){
+		this.name=name;
+		this.age=age;
+		this.show=function(){
+			window.alert(this.name+' '+this.age);
+		}
+	}
+	
+	function MidStu(name,age){
+		this.stu=Stu;
+		this.stu(name,age);//使用对象冒充的方法来实现继承，这句话不能少
+	}
+	
+	
+	function Pupil(name,age){
+		this.stu=Stu;
+		this.stu=(name,age);
+	}
+
+
+	var midStu=new MidStu('abc',123);
+	window.alert(midStu.name+midStu.age);
+	//MidStu.show();
+*/
+
+	
+//-->
+</script>
+</head>
+
+<body>
+</body>
+</html>

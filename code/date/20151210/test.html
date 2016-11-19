@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>codetest1210</title>
+    <link href="test.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h3>欢迎进入</h3>
+        <nav>
+            <ul>
+                <li>首页</li>
+                <li>测试</li>
+                <li>时期</li>
+                <li>测试</li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <h5>语义化标签一节元素标签</h5>
+        <p>
+            HTML5将是第一个自XHTML 1.0发布以来发布的网页标准语言，而HTML 4.01，
+            是在1999年发布的，你可以看到HTML5的工作草案在2022年将彻底定稿，
+            W3C HTML工作组和WHATWG已经作为代表，开放了一些借口和用法出来，
+            各大浏览器厂商纷纷响应，声称自家的浏览器支持html5所有属性和方法，
+            这是一个好的趋势HTML5中添加很多语义化的新标签，这样更容易理解网页的代码，
+            同时也帮助搜索引擎了解网站的结构，更好的收录，同样W3C的文件也更好理解了。
+        </p>
+        <section>
+            <hgroup>
+                <h1>section是啥？</h1>
+                <h2>关于section</h2>
+            </hgroup>
+            <p>section的介绍</p>
+            <h3>关于其他</h3>
+            <p>关于其他section的介绍</p>
+        </section>
+    </article>
+    <hr/>
+    <article>
+        <h3> output元素</h3>
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+            <input type="range" id="a" value="50">100
+            +<input type="number" id="b" value="50">
+            =<output name="x" for="a b"></output>
+        </form>
+    </article>
+    <hr/>
+    <article>
+        <h3>datalist元素</h3>
+        <form action="demo-form.php" method="get">
+            <input list="browsers" name="browser">
+            <datalist id="browsers">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+            </datalist>
+            <input type="submit">
+        </form>
+    </article>
+    <hr/>
+    <article>
+        <h3>keygen元素</h3>
+        <form action="test.php" method="get">
+            用户名: <input type="text" name="usr_name">
+            加密: <keygen name="security">
+            <input type="submit">
+        </form>
+    </article>
+    <hr/>
+    <article>
+        <h3>autocomplete和placeholder 属性</h3>
+        <form  autocomplete="on">
+            First name:<input type="text" name="fname"><br>
+            Last name: <input type="text" name="lname" autocomplete="off"><br>
+            E-mail: <input type="email" name="email" autocomplete="off" placeholder="zhouyou@yidake.com"><br>
+            <input type="submit">
+        </form>
+        <p>经测试:opera不支持autocomplete</p>
+    </article>
+    <hr/>
+    <article>
+        <h3>autofocus 属性</h3>
+        First name:<input type="text" name="fname" autofocus>
+    </article>
+    <hr/>
+    <article>
+        <h3>required 属性</h3>
+        <form>
+            Username: <input type="text" name="usrname" required>
+            <input type="submit">
+        </form>
+    </article>
+    <hr/>
+    <article>
+        <h3>step 属性</h3>
+        <form>
+            <input type="number" name="points" step="3">
+            <input type="submit">
+        </form>
+    </article>
+    <hr/>
+    <article>
+        <h3>pattern 属性</h3>
+        <form>
+            Country code: <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="只能包含三个字母">
+            <input type="submit">
+        </form>
+    </article>
+    <hr/>
+    <article>
+        <h3>multiple 属性</h3>
+        <form>
+            选择图片: <input type="file" name="img" multiple>
+            <input type="submit">
+        </form>
+
+        <p>尝试选取一张或者多种图片。</p>
+    </article>
+    <hr/>
+    <article>
+        <h3>min 和 max 属性</h3>
+        <form>
+            数量 (在1和5之间):
+            <input type="number" name="quantity" min="1" max="5"><br>
+            <input type="submit">
+        </form>
+    </article>
+    <footer>
+        <p>
+            这是我今天练习的测试页面
+        </p>
+    </footer>
+</body>
+</html>

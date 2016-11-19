@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex布局的简单练习</title>
+    <link rel="stylesheet" href="flex.css">
+</head>
+<body>
+    <header>
+        <h1>flex布局的简单练习</h1>
+    </header>
+    <!--  flex-direction默认布局-->
+    <section>
+        <h2>flex-direction：row（默认值）：主轴为水平方向，起点在左端。</h2>
+        <div class="box box1">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- flex-direction：row-reverse：主轴为水平方向，起点在右端。-->
+    <section>
+        <h2>
+            flex-direction：row-reverse：主轴为水平方向，起点在右端。
+        </h2>
+        <div class="box box2">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- flex-direction：column：主轴为垂直方向，起点在上沿。-->
+    <section>
+        <h2>
+            flex-direction：column：主轴为垂直方向，起点在上沿。
+        </h2>
+        <div class="box box3">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- flex-direction：column-reverse：主轴为垂直方向，起点在下沿。-->
+    <section>
+        <h2>
+            flex-direction：column-reverse：主轴为垂直方向，起点在下沿。
+        </h2>
+        <div class="box box4">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <hr/>
+    <!--flex-wrap: nowrap;不换行。 -->
+    <section>
+        <h2>
+            flex-wrap: nowrap;不换行。
+        </h2>
+        <div class="box box5">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+            <div class="box-item-circle">4</div>
+            <div class="box-item-square">5</div>
+            <div class="box-item-circle">6</div>
+            <div class="box-item-square">7</div>
+            <div class="box-item-circle">8</div>
+            <div class="box-item-square">9</div>
+            <div class="box-item-circle">10</div>
+            <div class="box-item-square">11</div>
+            <div class="box-item-circle">12</div>
+        </div>
+    </section>
+    <!--flex-wrap: wrap;不换行。 -->
+    <section>
+        <h2>
+            flex-wrap: wrap;换行。
+        </h2>
+        <div class="box box6">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square" style="height:150px;">3</div>
+            <div class="box-item-circle">4</div>
+            <div class="box-item-square">5</div>
+            <div class="box-item-circle">6</div>
+            <div class="box-item-square">7</div>
+            <div class="box-item-circle">8</div>
+            <div class="box-item-square">9</div>
+            <div class="box-item-circle">10</div>
+            <div class="box-item-square">11</div>
+            <div class="box-item-circle">12</div>
+        </div>
+    </section>
+    <!--flex-wrap: wrap-reverse：换行，垂直从下到上，水平从左到右。 -->
+    <section>
+        <h2>
+            flex-wrap: wrap-reverse：换行，垂直从下到上，水平从左到右。
+        </h2>
+        <div class="box box7">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+            <div class="box-item-circle">4</div>
+            <div class="box-item-square">5</div>
+            <div class="box-item-circle">6</div>
+            <div class="box-item-square">7</div>
+            <div class="box-item-circle">8</div>
+            <div class="box-item-square">9</div>
+            <div class="box-item-circle">10</div>
+            <div class="box-item-square">11</div>
+            <div class="box-item-circle">12</div>
+        </div>
+    </section>
+    <hr/>
+    <!-- justify-content: flex-start;（默认值）：左对齐-->
+    <section>
+        <h2>
+            justify-content: flex-start;（默认值）：左对齐
+        </h2>
+        <div class="box box8">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- justify-content: end：右对齐-->
+    <section>
+        <h2>
+            justify-content: end：右对齐
+        </h2>
+        <div class="box box9">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- justify-content: center 居中-->
+    <section>
+        <h2>
+            justify-content: center;居中
+        </h2>
+        <div class="box box10">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- justify-content: space-between 两端对齐，项目之间的间隔都相等-->
+    <section>
+        <h2>
+            justify-content: space-between 两端对齐，项目之间的间隔都相等
+        </h2>
+        <div class="box box11">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <!-- justify-content: space-around 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。-->
+    <section>
+        <h2>
+            justify-content: space-around 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+        </h2>
+        <div class="box box12">
+            <div class="box-item-square">1</div>
+            <div class="box-item-circle">2</div>
+            <div class="box-item-square">3</div>
+        </div>
+    </section>
+    <hr/>
+    <!-- align-items:flex-start：交叉轴的起点对齐。-->
+    <section>
+        <h2>
+            align-items:flex-start：交叉轴的起点对齐。
+        </h2>
+        <div class="box box13">
+            <span class="item-span1">1</span>
+            <span class="item-span2">2</span>
+            <span class="item-span3">3</span>
+            <span class="item-span4">4</span>
+            <span class="item-span5">5</span>
+        </div>
+    </section>
+    <!-- align-items:flex-end：交叉轴的终点对齐。-->
+    <section>
+        <h2>
+            align-items:flex-end：交叉轴的终点对齐。
+        </h2>
+        <div class="box box14">
+            <span class="item-span1">1</span>
+            <span class="item-span2">2</span>
+            <span class="item-span3">3</span>
+            <span class="item-span4">4</span>
+            <span class="item-span5">5</span>
+        </div>
+    </section>
+    <!-- align-items:center：交叉轴的中点对齐。-->
+    <section>
+        <h2>
+            align-items:center：交叉轴的中点对齐。
+        </h2>
+        <div class="box box15">
+            <span class="item-span1">1</span>
+            <span class="item-span2">2</span>
+            <span class="item-span3">3</span>
+            <span class="item-span4">4</span>
+            <span class="item-span5">5</span>
+        </div>
+    </section>
+    <!-- align-items:baseline: 项目的第一行文字的基线对齐。-->
+    <section>
+        <h2>
+            align-items:baseline: 项目的第一行文字的基线对齐。
+        </h2>
+        <div class="box box16">
+            <span class="item-span1">1</span>
+            <span class="item-span2">2</span>
+            <span class="item-span3">3</span>
+            <span class="item-span4">4</span>
+            <span class="item-span5">5</span>
+        </div>
+    </section>
+</body>
+</html>

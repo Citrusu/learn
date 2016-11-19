@@ -1,0 +1,27 @@
+<script>
+	/*function foo(a,b,c){
+		return a*b*c;
+	}
+	document.write(foo.length+'<br/>');
+	document.write(typeof foo.constructor+'<br/>');
+	document.write(typeof foo.call+'<br/>');
+	document.write(typeof foo.apply+'<br/>');
+	document.write(typeof foo.prototype+'<br/>');*/
+
+	function Person(p_name){
+		this.name=p_name;
+
+	}
+	//可以为Person类下的所有对象添加一个叫age的属性
+	Person.prototype.age=30;
+	Person.prototype.speak=function(){
+		alert(this.name+this.age);
+	};
+	p1=new Person('zhang');
+	//alert(p1.name+p1.age);
+	p2=new Person('li');
+	//alert(p2.name+p2.age);
+	p1.speak();
+	p2.speak();
+
+</script>

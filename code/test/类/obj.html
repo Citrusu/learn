@@ -1,0 +1,131 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+<!--
+/*
+//Math-静态类
+	window.alert(Math.abs(-15));
+
+	//Date-动态类
+	//显示当前日期
+	var nowdate=new Date();
+	window.alert(nowdate.toLocaleString());
+*/
+/*
+    6:00-9:00    早上好
+	9:00-11:30   上午好
+	11:31-14:30  中午好
+	14:31-17:30  下午好
+	17:31-18:40  傍晚好
+	18:41-00:00  晚上好
+	00:01-5:59   凌晨好
+	*/
+	
+/*	
+	var nowtime=new Date();		//
+	var hotime=nowtime.getHours();//拿到小时
+	var mitime=nowtime.getMinutes();//拿到分钟
+	var setime=nowtime.getSeconds();//拿到秒钟
+	var mysecond=hotime*3600+mitime*60;//把当前时间转换成秒数
+	var nowdate=nowtime.toLocaleString();//定义本地当前时间
+	//document.writeln('现在时间是:&nbsp'+hotime+':'+mitime+':'+setime+'<br/>');
+	document.writeln(nowdate);
+	
+	
+	if (mysecond>=6*3600&&mysecond<9*3600){
+		document.writeln('早上好！')
+	}else if (mysecond>=9*3600&&mysecond<11.5*3600)
+	{	document.writeln('上午好！')
+	}else if (mysecond>=11.5*3600&&mysecond<14.5*3600)
+	{	document.writeln('中午好！')
+	}else if (mysecond>=14.5*3600&&mysecond<17.5*3600)
+	{	document.writeln('下午好！')
+	}else if (mysecond>=17.5*3600&&mysecond<18.5*3600+600)
+	{	document.writeln('傍晚好！')
+	}else if (mysecond>=18.5*3600+600&&mysecond<24*3600)
+	{	document.writeln('晚上好！')
+	}else document.writeln('凌晨好！')
+*/	
+	
+	
+	/*var a=1234;
+	window.alert(a.toString(16));//把十进制的数转成十六进制或者其它进制
+	*/
+	/*
+	var b=7;
+	var c=3;
+	var d=b/c;
+	document.writeln(d.toFixed(2));//保留小数后两位
+
+function countBodyChildren(){
+	var body_element=document.getElementsByTagName("li")[0];
+	window.alert(body_element.childNodes.length);
+	window.onload=countBodyChildren;
+}
+var a=8.3;
+var b=3;
+document.write(Math.ceil(a)+'<br/>');
+document.write(Math.floor(a)+'<br/>');
+document.write(Math.pow(a,b)+'<br/>');
+var c=(Math.pow(a,b)+'<br/>');
+c=parseFloat(c);
+document.write(Math.floor(c)+'<br/>');
+
+
+function Person(){
+	
+}
+
+	var p1=new Person();
+	p1.name='zhang'
+	p1.age=30;
+	var p2=p1;
+	p1=null;
+	alert(p2.name+p2.age);
+	
+
+	function Person(p_name,p_age){
+		this.name=p_name;
+		this.age=p_age;
+	}
+	var zs=new Person('zhangsan',30);
+	var ls=new Person('lisi',20);
+	window.alert(zs.name+zs.age);
+	window.alert(ls.name+ls.age);
+
+	function Person(p_name,p_age){
+		this.name=p_name;
+		this.age=p_age;
+		
+	}
+	var zs=new Person('zhangsan',30);
+	window.alert(zs.constructor);
+
+	function Person(p_name,p_age){
+		this.name=p_name;
+		this.age=P_age;
+	}
+	function display(){
+		
+	}
+	
+	var p1=new Person('zhang',30);
+
+
+for(var i in document){
+	document.write(i+'<br/>');
+}
+*/
+var json={name:'zhang',say:function(){
+	window.alert(json.name);
+}
+};
+json.say();
+
+//-->
+</script>
+</head>
+
+<body>
+</body>
+</html>

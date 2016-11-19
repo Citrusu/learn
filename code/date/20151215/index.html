@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab滑动门</title>
+    <link rel="stylesheet" href="css/index.css">
+    <!--图片播放插件的CSS-->
+    <link rel="stylesheet" href="css/swiper.min.css">
+</head>
+<body>
+    <section id="slide_change">
+        <!--滑动菜单栏-->
+        <ul id="change_meun">
+            <li class="meun_active">热点</li>
+            <li>体育</li>
+            <li>财经</li>
+            <li>娱乐</li>
+            <li>图片</li>
+        </ul>
+        <!--滑动内容-->
+        <ul id="change_content">
+            <li class="content_activ">热点热点热点热点</li>
+            <li class="content_hidden">体育体育体育体育</li>
+            <li class="content_hidden">财经财经财经财经</li>
+            <li class="content_hidden">娱乐娱乐娱乐娱乐</li>
+            <li class="content_hidden">图片图片图片图片</li>
+        </ul>
+    </section>
+    <section id="show-img">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide show-img">
+                    <img src="images/img1.jpg" alt="">
+                </div>
+                <div class="swiper-slide show-img">
+                    <img src="images/img2.jpg" alt="">
+                </div>
+                <div class="swiper-slide show-img">
+                    <img src="images/img3.jpg" alt="">
+                </div>
+            </div>
+            <!--分布器-->
+            <div class="swiper-pagination show-contro"></div>
+            <!--导航按钮-->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <!--滚动条-->
+            <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+    </section>
+    <section id="show_img2">
+        <!-- 图片轮播start -->
+        <div id="showPic">
+            <ul id="showZone">
+                <li class="showPicHidden imgsize_276">
+                    <a href=""><img src="images/img1.jpg"></a>
+                </li>
+                <li class="showPicHidden imgsize_276">
+                    <a href=""><img src="images/img2.jpg"></a>
+                </li>
+                <li class="showPicHidden imgsize_276">
+                    <a href=""><img src="images/img3.jpg"></a>
+                </li>
+            </ul>
+            <ul id="showContro">
+                <li class="buttonRadiusCheck"></li>
+                <li class="buttonRadius"></li>
+                <li class="buttonRadius"></li>
+            </ul>
+            <span class="imgcontropre" id="imgcontropre"><</span>
+            <span class="imgcontronext" id="imgcontronext">></span>
+        </div>
+        <!-- 图片轮播end -->
+    </section>
+    <!--JS 引入-->
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <!--图片播放插件的JS-->
+    <script src="js/swiper.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .box{
+        width: 200px;
+        height: 100px;
+        border: 1px solid #f00;
+        background-color: #ADD8E6;
+        animation: myrotaX 5s running infinite linear;
+    }
+    @keyframes myrotaY{
+        0%{
+            transform: rotateY(0deg);
+        }
+        50%{
+            transform: rotateY(360deg);
+        }
+        100%{
+            transform: rotateY(0deg);
+        }
+    }
+    @keyframes myrotaX{
+        0%{
+            transform: rotateX(0deg);
+        }
+        50%{
+            transform: rotateX(360deg);
+        }
+        100%{
+            transform: rotateX(0deg);
+        }
+    }
+</style>
+<body>
+    <div class="box">
+        123
+    </div>
+</body>
+</html>

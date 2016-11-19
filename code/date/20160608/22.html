@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="timeBox"></div>
+    <script type="text/javascript">
+        function nowTime(){
+            var myDate = new Date();
+            document.getElementById('timeBox').innerHTML = myDate;
+        };
+        nowTime();
+        window.onload=function(){
+            setInterval(nowTime,1000);
+        }
+    </script>
+</body>
+</html>

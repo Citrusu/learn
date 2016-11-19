@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*注册模块*/
+#register{
+    width: 600px;
+    margin: 0 auto;
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: #333;
+}
+/*每个单项表单*/
+.box{
+    margin-top: 20px;
+}
+/*表单标题*/
+.item{
+    width: 80px;
+    margin-right: 5px;
+    text-align: right;
+    display: inline-block;
+}
+/*表单输入*/
+.new_text_box{
+    display: inline-block;
+}
+.new_text{
+    width: 200px;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+/*验证码*/
+.check_qst{
+    display: inline-block;
+}
+/*提交按键*/
+#submit_btn{
+    width: 210px;
+    height: 50px;
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    background: #69B946;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+/*提示信息*/
+.info{
+    margin-left: 10px;
+    display: inline-block;
+
+}

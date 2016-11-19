@@ -1,0 +1,18 @@
+<script>
+	function fn1(){
+		var n=999;
+		nAdd=function(){
+			n+=1
+		}
+		function fn2(){
+			alert(n);
+		}
+		return fn2;
+	}
+	var result=fn2();
+	//result();//999
+	nAdd();
+	result();//1000
+
+
+</script>

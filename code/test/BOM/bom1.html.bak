@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>BOM TEST</title>
+<script language="javascript" type="text/javascript" src="bom1.js"></script>
+<link rel="stylesheet" type="text/css" href="bom1.css">
+</head>
+<body>
+<div id="move"></div>
+
+
+
+</body>
+</html>

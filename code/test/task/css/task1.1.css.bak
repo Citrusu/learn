@@ -1,0 +1,44 @@
+#div{
+	background:red;
+	padding:10px;
+	float:left;
+}
+#div1{
+	margin:5px;
+	
+}
+
+#div2{
+	margin:5px;
+	float:left;
+}
+
+#div3{
+	margin:5px;
+	float:left;
+	
+}
+
+#id1,#id2,#id3{
+	width:100px;
+	height:50px;
+	background:blue;
+	margin:5px;
+	
+}
+
+#id4,#id5,#id6{
+	width:100px;
+	height:50px;
+	height:50px;
+	background:pink;
+	margin:5px;
+}
+
+
+#id7,#id8,#id9{
+	width:100px;
+	height:50px;
+	background:blue;
+	margin:5px;
+}

@@ -1,0 +1,24 @@
+
+header,article,footer {
+    margin: 0 auto;
+    width: 960px;
+    border: 1px solid #999;
+}
+article{
+    padding:20px 0;
+}
+hr{
+    width:960px;
+    border:none;
+}
+nav ul {
+    border-top:1px solid #999;
+    border-bottom:1px solid #999;
+    background: #999;
+    color: #fff;
+    list-style: none;
+}
+nav ul li{
+    margin: 5px 10px;
+    display: inline-block;
+}

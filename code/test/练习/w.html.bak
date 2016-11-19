@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>lx</title>
+<link rel="stylesheet" type="text/css" href="w.css" >
+</head>
+<body>
+<script language="javascript" src="w.js"></script>
+<script language="javascript" type="text/javascript"></script>
+
+<!--
+/*
+var a=4;
+var b=90;
+var c=a||b;
+window.alert(c);
+*/
+/*
+function convertToCelsius(temp){
+	var result=temp-32;
+	result=result/1.8;
+	return result;
+}
+	var temp_fahrenheit=95;
+	var temp_celsius=convertToCelsius(temp_fahrenheit);
+	alert(temp_celsius);
+*/
+//event="Javascript statement(s)"
+
+
+
+
+
+//-->
+</script>
+<h1>Snapshots</h1>
+
+<ul id="imagegallery">
+	<li><a href="1.png" onclick="showPic(this);return false;" title="111" ><img src="1.png"></a></li>
+	<li><a href="2.png" onclick="showPic(this);return false;" title="222" ><img src="2.png"></a></li>
+	<li><a href="3.png" onclick="showPic(this);return false;" title="333" ><img src="3.png"></a></li>
+	<li><a href="4.png" onclick="showPic(this);return false;" title="444" ><img src="4.png"></a></li>
+	<!--onclick="showPic(this);return false;"让鼠标点击后事件响应为假，让浏览器不做出默认响应-->
+</ul>
+
+<br/>
+<div id="id2"><img src="5.png" id="placeholder" title="my image gallery"></div>
+<div><p id="description">Description</p></div>
+</body>
+</html>

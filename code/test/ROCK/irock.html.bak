@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Edit</title>
+<script type="text/javascript">
+function touchEdit() { 
+	var userName=prompt("what is your name?" "enter your name here.");
+
+	if(userName){
+		alert("It is good to meet you ,"+ userName +".");
+		document.getElementById("Edit").src="EE.jpg";
+}
+}
+</script>
+</head>
+<body onload="alert('Hello,I am edit');">
+<img src="edit.jpg" id="Edit" style="cursor:pointer"
+onclick="touchEdit()"/>
+</body>
+
+</html>

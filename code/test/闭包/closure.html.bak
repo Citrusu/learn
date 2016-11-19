@@ -1,0 +1,32 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+	//1，闭包和GC是相关的
+	//2，闭包实际上是涉及到一个对象的属性，何时被GC的处理问题
+	//3，怎样才能对对象的属性形成一个闭包
+
+function A(){
+		var i=0;
+		function b(){
+			window.alert(i++);
+		}
+		return b;
+	}
+//闭包
+	A();//此时内存中  i空间被GC处理
+	var c=A();//这种用法GC不会把i当做垃圾
+	//window.alert('aaa');
+
+	c();
+	c();
+	c();
+	c();
+
+
+</script>
+<head>
+<body>
+</body>
+
+
+</html>

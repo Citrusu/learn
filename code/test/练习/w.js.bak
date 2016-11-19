@@ -1,0 +1,42 @@
+/*function showPic(whichpic){
+	var source=whichpic.getAttribute("href");
+	var placeholder=document.getElementById("placeholder");
+	placeholder.setAttribute("src",source);
+	//思路：先得到href属性值，再得到src属性，然后把src的值用href替换
+	
+	var text=whichpic.getAttribute("title");
+	var description=document.getElementById("description");
+	description.firstChild.nodeValue=text;
+}
+*/
+
+function prepareGallrey(){//鼠标事件
+	if(!document.getElementsByTagName) return false;//如果浏览器不支持getElementsByTagName则停止
+	if(!document.getElementById) return false;
+	if(!document.getElementById("imagegallery")) return false;
+	var gallery=document.getElementById("imagegallery");
+	var links=gallery.getElementsByTagName("a");
+	for(var i=0;i<links.length;i++){
+		links[i].onclick=function(){
+			showPic(this);
+			return false;
+		}
+	}
+}
+
+function showPic(whichpic){
+	if(!document.getElementById("placeholder")) return false;
+	var source=whichpic.getAttribute("href");
+	var placeholder=document.getElementById("placeholder");
+	if(placeholder.nodeName!="IMG")return false;
+	placeholder.setAttribute("src",source);
+	if(document.getElementById("description")){
+		var text=whichpic.getAttribute("title")? whichpic.getAttribute("title"):"";
+		var description=document.getElementById("description");
+		if(description.firstChild.nodeType==3){
+			description.firstChild.nodeValue=text;
+		}
+	}
+	return true;
+}
+

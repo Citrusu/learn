@@ -1,0 +1,8 @@
+#move{
+	width:60px;
+	height:60px;
+	background:red;
+	position:absolute;
+	top:110px;
+	left:110px;
+}

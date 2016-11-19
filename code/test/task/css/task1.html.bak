@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>task1</title>
+		<link rel="stylesheet" type="text/css" href="task1.css">
+	</head>
+	<body>
+		<div id="id1">div-a</div>
+		<div id="id2">div-b</div>
+		<div id="id3">div-c</div>
+		
+	</body>
+</html>

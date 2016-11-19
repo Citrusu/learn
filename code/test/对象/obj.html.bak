@@ -1,0 +1,41 @@
+<html>
+<head>
+<script language="javascript">
+<!--
+
+/*var dog={name:'小狗',age:8};
+window.alert(dog.name+dog.age);
+window.alert(dog.constructor);
+*/
+
+/*var dog={name:'hello'};
+function test(){
+	window.alert(this.name)};
+	//test();
+	test.call(dog);
+	//var name="qwe123"
+	//test.call(window);
+*/
+
+var dog={name:"小明",sayHello:function(a,b){window.alert("结果是"+(a+b));}};
+//循环列出dog对象的所有属性和方法   
+for(var key in dog){			//dog里面的key(属性和方法)
+	window.alert(dog[key]);		//dog里面的key
+}
+
+document.write("当前浏览器支持window对象的属性和方法<br/>");
+for(var key in window){
+	document.writeln(key+":"+window[key]+"<br/>")
+};
+
+
+
+
+//-->
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

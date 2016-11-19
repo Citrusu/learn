@@ -1,0 +1,128 @@
+header{
+    width: 960px;
+    margin: 0 auto;
+}
+section{
+    margin: 10px auto;
+    width: 960px;
+    border: 1px solid #999;
+    border-radius: 10px;
+}
+h2{
+    font-size: 20px;
+    font-weight: normal;
+}
+hr{
+    width: 960px;
+    margin: 30px auto;
+}
+.box{
+    display: flex;
+}
+.box-item-square,
+.box-item-circle{
+    width:100px;
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    margin: 5px 0;
+}
+.box-item-square{
+    background: #34AFDE;
+}
+.box-item-circle{
+    background: #C41FED;
+    /*border-radius: 50%;*/
+}
+/*flex-direction：row（默认值）：主轴为水平方向，起点在左端。*/
+.box1{
+    flex-direction: row;
+}
+/*flex-direction：row-reverse：主轴为水平方向，起点在右端。*/
+.box2{
+    flex-direction: row-reverse;
+}
+/*flex-direction：column：主轴为垂直方向，起点在上沿。*/
+.box3{
+    flex-direction: column;
+}
+/*flex-direction：column-reverse：主轴为垂直方向，起点在下沿。*/
+.box4{
+    flex-direction: column-reverse;
+}
+/*flex-wrap: nowrap;不换行。*/
+.box5{
+    flex-wrap: nowrap;
+}
+/*flex-wrap: wrap;换行*/
+.box6{
+    flex-wrap: wrap;
+}
+/*wrap-reverse：换行，垂直从下到上，水平从左到右。*/
+.box7{
+    flex-wrap: wrap-reverse;
+}
+/*justify-content: flex-start;（默认值）：左对齐*/
+.box8{
+    justify-content: flex-start;
+}
+/*justify-content: end：右对齐*/
+.box9{
+    justify-content: flex-end;
+}
+/*justify-content: center 居中*/
+.box10{
+    justify-content: center;
+}
+/*justify-content: space-between 两端对齐，项目之间的间隔都相等*/
+.box11{
+    justify-content: space-between;
+}
+/*justify-content: space-around 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。*/
+.box12{
+    justify-content: space-around;
+}
+
+/*align-items属性*/
+.box span{
+    margin: 0 10px;
+    width: 50px;
+    background: #36F0CE;
+}
+.item-span1{
+    height: 20px;
+}
+.item-span2{
+    height: 40px;
+}
+.item-span3{
+    height: 60px;
+}
+.item-span4{
+    height: 30px;
+}
+.item-span5{
+    height: 50px;
+}
+/* align-items:flex-start：交叉轴的起点对齐。*/
+.box13{
+    align-items: flex-start;
+}
+/*align-items:flex-end：交叉轴的终点对齐。*/
+.box14{
+    align-items: flex-end;
+}
+/*align-items:center：交叉轴的中点对齐。*/
+.box15{
+    align-items: center;
+}
+/*align-items:baseline: 项目的第一行文字的基线对齐。*/
+.box16{
+    align-items: baseline;
+}
+.box16 .item-span1{
+    padding: 10px 0;
+}
+.box16 .item-span3{
+    padding: 20px 0;
+}
