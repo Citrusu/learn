@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /**
+     * Created by zhouy on 2016/11/28.
+     */
+    var scop = 'top';
+    var f1 = function(){
+        console.log(scop);
+    };
+    f1();
+    var f2 = function(){
+        var scop = 'f2';
+        f1();
+    };
+    f2();
+</script>
+</body>
+</html>
