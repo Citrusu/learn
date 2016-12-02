@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var person = {
+        name : 'zy'
+    };
+    //对象属性可读
+//    Object.defineProperty(person,'name',{
+//       writable:true,
+//        value:'zlh'
+//    });
+    //对象属性是否可删除
+    Object.defineProperty(person,'name',{
+       configuable:false
+    });
+    person.name = 'zhouyou';
+    console.log(person.name);
+</script>
+</body>
+</html>
