@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="查看名字" id="btnName">
+<input type="button" value="查看年龄" id="btnAge" data-age="18">
+<input type="button" value="查看性别" id="btnSex" data-sex="女">
+<script>
+    function Person(){
+
+    }
+    Person.prototype.name = 'zy';
+    Person.prototype.sayArgument = function(sayArgument){
+        console.log(sayArgument);
+    };
+
+    var person1 = new Person({});
+    var person2 = function(){};
+</script>
+<script>
+    document.querySelector('#btnName').addEventListener('click',function(){
+        person1.sayArgument(person1.name);
+    });
+    document.querySelector('#btnAge').addEventListener('click',function(){
+        person1.sayArgument(this.getAttribute('data-age'));
+    });
+    document.querySelector('#btnSex').addEventListener('click',function(){
+        person1.sayArgument(this.getAttribute('data-sex'));
+    });
+
+    console.log(Person.prototype.isPrototypeOf(person1));
+    console.log(Person.prototype.isPrototypeOf(person2));
+
+    console.log(Object.getPrototypeOf(person1) == Person.prototype);
+    console.log(Object.getPrototypeOf(person1).name);
+</script>
+
+<script>
+
+</script>
+</body>
+</html>
