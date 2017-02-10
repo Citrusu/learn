@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="num">0</span>
+<script>
+    var num = document.querySelector('#num');
+    var catConfig = {};
+    catConfig.countTime = 1000;
+    countDown();
+    //倒计时
+    function countDown(){
+        catConfig.time =  setInterval(function(){
+            if(catConfig.countTime >= 0){
+                num.innerHTML = catConfig.countTime;
+                catConfig.countTime --;
+            }else{
+                clearInterval(catConfig.time);
+            }
+        },10);
+    }
+</script>
+</body>
+</html>
