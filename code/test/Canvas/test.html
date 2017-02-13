@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>HTLM5</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<br/>
+<canvas width="500px" height="500px" id="can1" style="border:1px solid red"></canvas>
+<br/>
+
+<div onclick="test()">test</div>
+<div onclick="test2()">test2</div>
+<div onclick="Clear()">Clear</div>
+<script type="text/javascript">
+
+    var canvas=document.getElementById('can1');
+    var cxt=canvas.getContext("2d");
+
+    cxt.moveTo(30,0);
+    cxt.lineTo(30,40);
+    cxt.stroke();
+
+
+    cxt.arc(100,100,30,0,Math.PI*2,true);
+    cxt.fillStyle="#FF0000";
+    cxt.fill();
+    function Coord(x,y){
+        this.x=x;
+        this.y=y;
+    }
+
+    function test(){
+        cxt.beginPath();
+        cxt.moveTo(0,0);
+        cxt.lineTo(100,100);
+        cxt.stroke();
+        cxt.closePath();
+    }
+
+    function test2(){
+        cxt.beginPath();
+        cxt.moveTo(100,0);
+        cxt.lineTo(100,100);
+        cxt.stroke();
+        cxt.closePath();
+    }
+    function Clear(){
+        cxt.clearRect(0,0,canvas.width,canvas.height);
+    }
+</script>
+
+</body>
+</html>

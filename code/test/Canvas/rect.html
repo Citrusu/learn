@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top:0;*/
+            /*width: 300px;*/
+            /*height: 800px;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs"></canvas>
+    <script>
+        window.onload = function(){
+            var cvs = document.querySelector('#cvs');
+            var context = cvs.getContext('2d');
+
+            //红色矩形
+            context.fillStyle = '#f00';
+            context.fillRect(10,10,50,50);
+
+            //半透明蓝色矩形
+            context.fillStyle = 'rgba(0,0,255,.5)';
+            context.fillRect(30,30,50,50);
+
+            //红色矩形
+            context.strokeStyle = '#f00';
+            context.strokeRect(100,100,50,50);
+
+            //半透明蓝色矩形
+            context.strokeStyle = 'rgba(0,0,255,.5)';
+            context.strokeRect(130,130,50,50);
+
+            context.clearRect(40,40,10,10);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>214活动</title>
+    <meta id="wxKeywords" name="Keywords" content="<keywords />">
+    <meta id="wxDescription" name="Description" content="<description />" />
+    <meta name="apple-touch-fullscreen" content="YES" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--ETUI CSS 开始-->
+    <link rel="stylesheet" href="../../../etui/css/etui.css">
+    <!--ETUI CSS 结束-->
+    <style>
+        canvas{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="ui-page-group">-->
+    <!--<div class="ui-page ui-page-current">-->
+        <!--<div class="ui-content"></div>-->
+    <!--</div>-->
+<!--</div>-->
+<canvas id="cvs"></canvas>
+<canvas id="lineCvs"></canvas>
+<img src="../../../img/head2.png" alt="" style="display: none">
+<button id="clear" style="position: absolute;bottom: 10px;left: 10px;">清除</button>
+<script>
+    window.onload = function(){
+        //图层
+        var cvs = document.querySelector('#cvs');
+        cvs.width = screen.width;
+        cvs.height = screen.height;
+        var ctx = cvs.getContext('2d');
+        //线层
+        var lineCvs = document.querySelector('#lineCvs');
+        lineCvs.width = screen.width;
+        lineCvs.height = screen.height;
+        var lineCtx = lineCvs.getContext('2d');
+
+        var clearBtn = document.querySelector('#clear');
+        function getRandom(range){
+            return Math.floor(Math.random() * range);
+        }
+        //图片
+        var img = document.images[0];
+        //图片大小
+        var imgSize = {
+            w :30,
+            h :30
+        };
+        //添加图片
+        function addImg(x ,y){
+            //imgRotate();
+            return ctx.drawImage(img,x,y,imgSize.w,imgSize.h);
+        }
+        //图片旋转角度
+        function imgRotate(){
+            return ctx.rotate(getRandom( 2 * Math.PI));
+        }
+        //画线
+        function strokeLine(x1 ,y1 ,x2 ,y2 ,color){
+            lineCtx.beginPath();
+            lineCtx.moveTo(x1,y1);
+            lineCtx.lineTo(x2,y2);
+            lineCtx.strokeStyle = color;
+            lineCtx.lineWidth = 1;
+            lineCtx.stroke();
+            lineCtx.closePath();
+        }
+        //删除已连接
+        function delArea(x1 ,y1 ,x2 ,y2){
+            lineCtx.clearRect(0,0,lineCvs.width,lineCvs.height);
+        }
+        clearBtn.onclick = function(){
+            delArea();
+            //console.log(getRandom( 2 * Math.PI));
+        };
+        addImg(10,10);
+        addImg(90,10);
+        addImg(130,60);
+        addImg(80,90);
+        strokeLine(10,10,90,10,'#f00');
+    };
+</script>
+</body>
+</html>

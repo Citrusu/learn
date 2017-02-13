@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        canvas{
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top:0;*/
+            /*width: 500px;*/
+            /*height: 500px;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+    <script>
+        window.onload = function(){
+            var cvs = document.querySelector('#cvs');
+            var context = cvs.getContext('2d');
+
+            context.fillStyle = '#f00';
+            context.save();
+
+            context.fillStyle = '#0f0';
+            context.translate(100,100);
+            context.save();
+
+            context.fillStyle = '#00f';
+            context.fillRect(0,0,100,200);
+
+            context.restore();
+            context.fillRect(10,10,100,200);
+
+            context.restore();
+            context.fillRect(0,0,100,200);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        canvas{
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top:0;*/
+            /*width: 500px;*/
+            /*height: 500px;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+    <script>
+        window.onload = function(){
+            var cvs = document.querySelector('#cvs');
+            var context = cvs.getContext('2d');
+            //外圆
+            context.beginPath();
+            context.arc(150,150,100,0, 2* Math.PI,false);
+            //内圆
+            context.moveTo(245,150);
+            context.arc(150,150,95,0, 2* Math.PI,false);
+            context.stroke();
+            //秒针
+            context.beginPath();
+            context.moveTo(150,150);
+            context.lineTo(150,70);
+            context.strokeStyle = '#f00';
+            context.lineWidth = 1;
+            context.stroke();
+            //分针
+            context.beginPath();
+            context.moveTo(150,150);
+            context.lineTo(220,150);
+            context.strokeStyle = '#000';
+            context.lineWidth = 2;
+            context.stroke();
+            //时针
+            context.beginPath();
+            context.moveTo(150,150);
+            context.lineTo(180,180);
+            context.strokeStyle = '#333';
+            context.lineWidth = 3;
+            context.stroke();
+
+            //文本
+            context.font = '12px';
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText('12' , 150 ,65);
+            context.fillText('3' , 235 ,150);
+            context.fillText('6' , 150 , 235);
+            context.fillText('9' , 65 ,150);
+
+            //变换
+            context.translate(150,150);
+            context.rotate(2);
+
+            if(context.isPointInPath(130,150)){
+                console.log('yes');
+            }
+        };
+    </script>
+</body>
+</html>

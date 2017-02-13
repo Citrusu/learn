@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        canvas{
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top:0;*/
+            /*width: 300px;*/
+            /*height: 800px;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+    <script>
+        window.onload = function(){
+            var cvs = document.querySelector('#cvs');
+            var ctx = cvs.getContext('2d');
+
+            var gradient = ctx.createLinearGradient(30,30,70,70);
+            gradient.addColorStop(0,'#fff');
+            gradient.addColorStop(1,'#00f');
+
+            ctx.fillStyle = '#f00';
+            ctx.fillRect(10,10,50,50);
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(30,30,70,70);
+        };
+    </script>
+</body>
+</html>
