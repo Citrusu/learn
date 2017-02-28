@@ -1,9 +1,9 @@
 /**
  * Created by Citrus on 2017/2/27.
  */
-global.aa = '111';
-function abc(){
-    aa = 111;
-    console.log(this.aa);
+function func(ms){
+    setTimeout((val) => {
+        console.log(val);
+    },ms,'abc');
 }
-abc();
+func(1000);
