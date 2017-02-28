@@ -9,6 +9,20 @@ let pkg = require('./package');
 
 let app = express();
 
+//设置模板全局常量
+app.locals.blog = {
+    title: pkg.name,
+    description: pkg.description
+};
+
+//添加模板必需的三个变量
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    res.locals.success = req.flash('success').toString();
+    res.locals.error = req.flash('error').toString();
+    next();
+});
+
 //设置模板目录
 app.set('views', path.join(__dirname, 'views'));
 //设置模板引擎为 ejs
