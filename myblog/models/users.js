@@ -1,0 +1,11 @@
+/**
+ * Created by Citrus on 2017/2/28.
+ */
+let User = require('../lib/mongo').User;
+
+module.exports = {
+    //注册一个用户
+    create: (user) => {
+        return User.create(user).exec();
+    }
+};
