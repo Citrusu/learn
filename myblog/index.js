@@ -6,6 +6,8 @@ let flash = require('connect-flash');
 let config = require('config-lite');
 let routes = require('./routes');
 let pkg = require('./package');
+let winston = require('winston');
+let expressWinston = require('express-winston');
 
 let app = express();
 
@@ -52,8 +54,32 @@ app.use((req, res, next) => {
     next();
 });
 
+//正常请求的日志
+app.use(expressWinston.logger({
+    transports: [
+        new (winston.transports.Console)({
+            json: true,
+            colorize: true
+        }),
+        new winston.transports.File({
+            filename: 'logs/success.log'
+        })
+    ]
+}));
 //路由
 routes(app);
+//错误请求的日志
+app.use(expressWinston.errorLogger({
+    transports: [
+        new winston.transports.Console({
+            json: true,
+            colorize: true
+        }),
+        new winston.transports.File({
+            filename: 'log/error.log'
+        })
+    ]
+}));
 
 //error page
 app.use((err, req, res, next) => {
