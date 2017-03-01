@@ -10,8 +10,13 @@ let PostModel = require('../models/posts');
 //GET /posts 所有用户或者特定用户的文章页
 //eg: GET /posts?author=xxx
 router.get('/',(req, res, next) => {
-    // res.send(req.flash());
-    res.render('posts');
+    let author = req.query.author;
+
+    PostModel.getPosts(author).then((posts) => {
+        res.render('posts', {
+            posts: posts
+        })
+    }).catch(next);
 });
 
 //GET /posts/create 发表文章页
