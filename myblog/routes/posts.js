@@ -148,10 +148,10 @@ router.post('/:postId/comment', checkLogin, (req, res, next) => {
 //GET /posts/:postId/comment/:commentId/remove 删除一条留言
 router.get('/:postId/comment/:commentId/remove', checkLogin, (req, res, next) => {
     let commentId = req.params.commentId;
-    let author = req.params.user._id;
+    let author = req.session.user._id;
 
     CommentModel.delCommentById(commentId, author).then(() => {
-        req.falsh('success', '删除留言成功');
+        req.flash('success', '删除留言成功');
         //删除成功后跳转到上一页
         res.redirect('back');
     }).catch(next);
