@@ -7,7 +7,7 @@ let sha1 = require('sha1');
 let express = require('express');
 let router = express.Router();
 
-let UserModel = require('../middlewares/check');
+let UserModel = require('../models/users');
 let checkNotLogin = require('../middlewares/check').checkNotLogin;
 
 //GET /signup 注册页
