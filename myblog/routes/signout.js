@@ -7,7 +7,7 @@ let router = express.Router();
 let checkLogin = require('../middlewares/check').checkLogin;
 
 //GET /signout 登出
-router.get('/signout', checkLogin, (req, res, next) => {
+router.get('/', checkLogin, (req, res, next) => {
     res.send(req.flash());
 });
 
