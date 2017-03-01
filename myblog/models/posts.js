@@ -3,21 +3,21 @@
  */
 let marked = require('marked');
 let Post = require('../lib/mongo').Post;
-let ComtentModel = require('./comments');
+let CommentModel = require('./comments');
 
 //给 post 添加留言数 commentsCount
-Post.plugin('addCommentCount', {
+Post.plugin('addCommentsCount', {
     afterFind: (posts) => {
         return Promise.all(posts.map((post) => {
-            return ComtentModel.getComtentsCount(post._id).then((comtentsCount) => {
-                post.commentsCount  = comtentsCount;
+            return CommentModel.getCommentsCount(post._id).then((commentsCount) => {
+                post.commentsCount = commentsCount;
                 return post;
             });
         }));
     },
     afterFindOne: (post) => {
         if(post){
-            return ComtentModel.getComtentsCount(post._id).then((count) => {
+            return CommentModel.getCommentsCount(post._id).then((count) => {
                 post.commentsCount = count;
                 return post;
             })
@@ -97,10 +97,12 @@ module.exports = {
 
     //通过用户 id 和文章 id 删除一篇文章
     delPostById: (postId, author) => {
-        return Post.remove({author: author, _id: postId}).exec().then((res) => {
+        return Post.remove({author: author, _id: postId})
+            .exec()
+            .then((res) => {
             //文章删除后，再删除该文章下所有的留言
-            if(res.result.ok && res.result.n){
-                return ComtentModel.delCommentByPostId(postId);
+            if(res.result.ok && res.result.n > 0){
+                return CommentModel.delCommentsByPostId(postId);
             }
         });
     },
