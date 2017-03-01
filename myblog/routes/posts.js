@@ -6,6 +6,7 @@ let router = express.Router();
 
 let checkLogin = require('../middlewares/check').checkLogin;
 let PostModel = require('../models/posts');
+let CommentModel = require('../models/comments');
 
 //GET /posts 所有用户或者特定用户的文章页
 //eg: GET /posts?author=xxx
@@ -65,17 +66,19 @@ router.get('/:postId', (req, res, next) => {
     let postId = req.params.postId;
 
     Promise.all([
-        PostModel.getPostByid(postId),//获取文章信息
+        PostModel.getPostById(postId),//获取文章信息
         PostModel.incPv(postId) // pv 加 1
     ]).then((result) => {
         let post = result[0];
+        let comments = result[1];
         if(!post){
             throw new Error('该文章不存在');
         }
 
         res.render('post', {
-            post: post
-        })
+            post: post,
+            comments: comments
+        });
     }).catch(next);
 });
 
