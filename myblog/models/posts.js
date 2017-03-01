@@ -54,7 +54,7 @@ module.exports = {
     //通过文章id 给 pv 加 1
     incPv: (postId) => {
         return Post
-            .updata({_id: postId}, {$inc: {pv: 1}})
+            .update({_id: postId}, {$inc: {pv: 1}})
             .exec();
     }
 };
