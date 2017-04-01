@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app-2">
+    <ol>
+        <li v-for="item in items">{{ item.text }}</li>
+    </ol>
+</div>
+
+<script>
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            items: [
+                { text: '11111'},
+                { text: '22222'},
+                { text: '33333'},
+            ]
+        }
+    });
+
+    app2.$watch('items', function(newVal, oldVal){
+        console.log(newVal);
+        console.log(oldVal);
+    })
+</script>
+</body>
+</html>
