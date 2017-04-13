@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{total}}</p>
+    <my-comp v-on:add="addto"></my-comp>
+    <my-comp v-on:add="addto"></my-comp>
+</div>
+
+
+<script>
+    Vue.component('my-comp',{
+        template: '<button @click="add">{{ counter }}</button>',
+        methods: {
+            add: function(){
+                this.counter += 1;
+                this.$emit('add');
+            }
+        },
+        data: function(){
+            return {counter: 0}
+        }
+    });
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+            total: 0,
+        },
+        methods: {
+            addto: function(){
+                this.total += 1;
+            }
+        }
+    })
+</script>
+</body>
+</html>
