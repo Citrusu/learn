@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>frame</title>
+</head>
+<body>
+<input id="winurl" type="url" placeholder="打开的链接" required>
+<input type="text" placeholder="width" id="winw"> x
+<input type="text" placeholder="height" id="winh">
+<button id="btnOpen">打开窗口</button>
+<button id="btnClose">关闭窗口</button>
+<button id="btnResize">调整尺寸</button>
+<script>
+    let btnOpen = document.querySelector('#btnOpen');
+    let btnClose = document.querySelector('#btnClose');
+    let btnResize = document.querySelector('#btnResize');
+    let win;
+    btnOpen.addEventListener('click', function(){
+        let url = document.querySelector('#winurl').value;
+        let w = document.querySelector('#winw').value;
+        let h = document.querySelector('#winh').value;
+
+        win = window.open(url,target='myframe','height='+ h +',width='+ w);
+
+    });
+
+    btnResize.addEventListener('click', function(){
+        let w = document.querySelector('#winw').value;
+        let h = document.querySelector('#winh').value;
+        win.resizeTo(w, h);
+    });
+
+    btnClose.addEventListener('click', function(){
+        win.close();
+    });
+
+</script>
+</body>
+</html>
