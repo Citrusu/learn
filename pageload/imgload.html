@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>img load</title>
+</head>
+<body>
+<p><span>loading</span><span id="loadNum">0</span><span>%</span></p>
+<img src="../img/head1.png" alt="">
+<img src="../img/head2.png" alt="">
+<img src="../img/head3.png" alt="">
+<img src="../img/head4.png" alt="">
+<img src="../img/head5.png" alt="">
+<img src="../img/head6.png" alt="">
+<img src="../img/head7.png" alt="">
+<img src="../img/head8.png" alt="">
+
+<script>
+    window.onload = function(){
+        let loadNum = document.querySelector('#loadNum');
+        let imgs = document.querySelectorAll('img');
+        let imgBox = [];
+        let imgLen = imgBox.length;
+        imgs.forEach(function(n, i){
+            imgBox.push(imgs[i].src);
+        });
+
+        imgBox.forEach(function(n, i){
+            let nowImg = document.createElement('img');
+            nowImg.onload = function(){
+                loadNum.innerText = Math.ceil(i / imgLen * 100);
+                if(i >= imgLen - 1){
+                    loadNum.innerText = '100';
+                    console.log('all img loaded');
+                }
+                console.log('loaded');
+            };
+            nowImg.src = imgBox[i];
+        });
+
+    }
+</script>
+</body>
+</html>
