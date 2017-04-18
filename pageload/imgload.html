@@ -11,42 +11,56 @@
 </style>
 <body>
 <p><span>loaded</span><span id="loadNum">0</span><span>%</span></p>
-<img src="../img/head1.png" alt="">
-<img src="../img/head2.png" alt="">
-<img src="../img/head3.png" alt="">
-<img src="../img/head4.png" alt="">
-<img src="../img/head5.png" alt="">
-<img src="../img/head6.png" alt="">
-<img src="../img/head7.png" alt="">
-<img src="../img/head8.png" alt="">
-<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076871&di=7f57842f7578b334938ea68e0ca4d709&imgtype=0&src=http%3A%2F%2Fwapfile.desktx.com%2Fpc%2F161223%2Fbigpic%2F585b7dd487815.jpg" alt="">
-<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076868&di=5d39a67e8e6849ce71a97fe3a589d793&imgtype=0&src=http%3A%2F%2Fimg6.web07.cn%2FUPics%2FBizhi%2F2016%2F0912%2F118785121111181.jpg" alt="">
-<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076867&di=878a36ae2c4021ae3b9f284df41309ec&imgtype=0&src=http%3A%2F%2Fimg6.web07.cn%2FUPics%2FBizhi%2F2016%2F0911%2F117478111845311.jpg" alt="">
-<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076868&di=699b0e754a98b8bff81d0bc396205341&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Ff%2F56d80a4d9e49e.jpg" alt="">
-<img src="https://cdn.pixabay.com/photo/2017/03/16/21/25/ladies-scull-rowing-2150320__340.jpg" alt="">
+<img data-src="../img/head1.png" alt="">
+<img data-src="../img/head2.png" alt="">
+<img data-src="../img/head3.png" alt="">
+<img data-src="../img/head4.png" alt="">
+<img data-src="../img/head5.png" alt="">
+<img data-src="../img/head6.png" alt="">
+<img data-src="../img/head7.png" alt="">
+<img data-src="../img/head8.png" alt="">
+<img data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076871&di=7f57842f7578b334938ea68e0ca4d709&imgtype=0&src=http%3A%2F%2Fwapfile.desktx.com%2Fpc%2F161223%2Fbigpic%2F585b7dd487815.jpg" alt="">
+<img data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076868&di=5d39a67e8e6849ce71a97fe3a589d793&imgtype=0&src=http%3A%2F%2Fimg6.web07.cn%2FUPics%2FBizhi%2F2016%2F0912%2F118785121111181.jpg" alt="">
+<img data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076867&di=878a36ae2c4021ae3b9f284df41309ec&imgtype=0&src=http%3A%2F%2Fimg6.web07.cn%2FUPics%2FBizhi%2F2016%2F0911%2F117478111845311.jpg" alt="">
+<img data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492536076868&di=699b0e754a98b8bff81d0bc396205341&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Ff%2F56d80a4d9e49e.jpg" alt="">
+<img data-src="https://cdn.pixabay.com/photo/2017/03/16/21/25/ladies-scull-rowing-2150320__340.jpg" alt="">
 
 <script>
     window.onload = function(){
         let loadNum = document.querySelector('#loadNum');
         let imgs = document.querySelectorAll('img');
         let imgBox = [];
+        let index = 0;
+
         imgs.forEach(function(n, i){
-            imgBox.push(imgs[i].src);
+            imgBox.push(imgs[i].getAttribute('data-src'));
         });
+
+        let loadImg = function(node, idx){
+            return function(){
+                loadNum.innerText = Math.ceil(index / imgLen * 100);
+                if(index >= imgLen - 1){
+                    loadNum.innerText = '100';
+                    console.log('all img loaded');
+                    loaded();
+                }
+                console.log('loaded');
+                index += 1;
+            }
+        };
 
         let imgLen = imgBox.length;
         imgBox.forEach(function(n, i){
             let nowImg = document.createElement('img');
-            nowImg.onload = function(){
-                loadNum.innerText = Math.ceil(i / imgLen * 100);
-                if(i >= imgLen - 1){
-                    loadNum.innerText = '100';
-                    console.log('all img loaded');
-                }
-                console.log('loaded');
-            };
+            nowImg.onload = loadImg(nowImg, i);
             nowImg.src = imgBox[i];
         });
+
+        function loaded(){
+            imgs.forEach(function(n, i){
+                imgs[i].src = imgs[i].getAttribute('data-src');
+            });
+        }
 
     }
 </script>
