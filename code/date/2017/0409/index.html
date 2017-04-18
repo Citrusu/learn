@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdn.bootcss.com/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<script>
+    var url = 'https://y.qq.com/download/download.js';
+    var postData = {
+        jsonpCallback: 'MusicJsonCallback',
+        loginUin: '0',
+        hostUin: '0',
+        format: 'jsonp',
+        inCharset: 'utf8',
+        outCharset: 'utf-8',
+        notice: '0',
+        platform: 'yqq',
+        needNewCode: '0',
+    };
+    $.get(url, postData, function (data, s, x) {
+        console.log(data);
+        console.log(s);
+        console.log(x);
+    }, 'jsonp');
+
+</script>
+</body>
+</html>
