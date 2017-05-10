@@ -6,8 +6,43 @@
 </head>
 <body>
 <h1>hello</h1>
+<div id="msgBox"></div>
+<input type="text" id="inputBox">
+<button id="sendBtn">发送</button>
 <script>
-    //let ws = new WebSocket('localhost:3000')
+    let url = 'ws://localhost:3000';
+    let socket = new WebSocket(url);
+
+    console.log("Clinet is running...");
+
+    socket.onmessage = function(event){
+        console.log(event);
+
+        let msgBox = document.querySelector('#msgBox');
+        let msgItem = document.createElement('div');
+        msgItem.innerText = event.data;
+        msgBox.appendChild(msgItem);
+    };
+
+    socket.onopen = function(event){
+        console.log("websocket is open");
+        let inputBox = document.querySelector('#inputBox');
+        document.querySelector('#sendBtn').addEventListener('click', function(){
+            let val = inputBox.value;
+            socket.send(val);
+            inputBox.value = '';
+        })
+
+    };
+
+    socket.onerror = function(event){
+        document.write("websocket create failed");
+    };
+
+    window.onbeforeunload = function(){
+        socket.send("Client is Leaving");
+        return "Are you sure";
+    };
 </script>
 </body>
 </html>
