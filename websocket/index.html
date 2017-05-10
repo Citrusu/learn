@@ -3,11 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body{
+            padding: 20px;
+        }
+        .left{
+            text-align: left;
+        }
+        .right{
+            text-align: right;
+            float: right;
+            clear: both;
+            background-color: #78a2d6;
+            color: #fff;
+        }
+        ul{
+            width: 300px;
+            border: 1px solid #ddd;
+            height: 400px;
+            overflow-y: scroll;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            float: left;
+            clear: both;
+            padding: 3px 5px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            border-radius: 10px;
+        }
+        textarea{
+            width: 300px;
+            height: 50px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
 <h1>hello</h1>
-<div id="msgBox"></div>
-<input type="text" id="inputBox">
+<ul id="msgBox"></ul>
+<textarea name="" id="inputBox" cols="30" rows="10"></textarea>
 <button id="sendBtn">发送</button>
 <script>
     let url = 'ws://localhost:3000';
@@ -15,11 +52,12 @@
 
     console.log("Clinet is running...");
 
-    socket.onmessage = function(event){
-        console.log(event);
+    let msgBox = document.querySelector('#msgBox');
 
-        let msgBox = document.querySelector('#msgBox');
-        let msgItem = document.createElement('div');
+    socket.onmessage = function(event){
+        //console.log(event);
+        //显示来自服务器的消息
+        let msgItem = document.createElement('li');
         msgItem.innerText = event.data;
         msgBox.appendChild(msgItem);
     };
@@ -30,13 +68,18 @@
         document.querySelector('#sendBtn').addEventListener('click', function(){
             let val = inputBox.value;
             socket.send(val);
+            //显示自己的消息
+            let msgItem = document.createElement('li');
+            msgItem.innerText = val;
+            msgItem.setAttribute('class', 'right');
+            msgBox.appendChild(msgItem);
             inputBox.value = '';
         })
 
     };
 
     socket.onerror = function(event){
-        document.write("websocket create failed");
+        console.log("websocket create failed");
     };
 
     window.onbeforeunload = function(){
