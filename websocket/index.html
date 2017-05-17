@@ -46,46 +46,8 @@
 <ul id="msgBox"></ul>
 <textarea name="" id="inputBox" cols="30" rows="10"></textarea>
 <button id="sendBtn">发送</button>
-<script>
-    let url = 'ws://localhost:3000';
-    let socket = new WebSocket(url);
 
-    console.log("Clinet is running...");
-
-    let msgBox = document.querySelector('#msgBox');
-
-    socket.onmessage = function(event){
-        //console.log(event);
-        //显示来自服务器的消息
-        let msgItem = document.createElement('li');
-        msgItem.innerText = event.data;
-        msgBox.appendChild(msgItem);
-    };
-
-    socket.onopen = function(event){
-        console.log("websocket is open");
-        let inputBox = document.querySelector('#inputBox');
-        document.querySelector('#sendBtn').addEventListener('click', function(){
-            let val = inputBox.value;
-            socket.send(val);
-            //显示自己的消息
-            let msgItem = document.createElement('li');
-            msgItem.innerText = val;
-            msgItem.setAttribute('class', 'right');
-            msgBox.appendChild(msgItem);
-            inputBox.value = '';
-        })
-
-    };
-
-    socket.onerror = function(event){
-        console.log("websocket create failed");
-    };
-
-    window.onbeforeunload = function(){
-        socket.send("Client is Leaving");
-        return "Are you sure";
-    };
-</script>
+<script src="config.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

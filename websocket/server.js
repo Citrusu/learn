@@ -11,7 +11,7 @@ const users = [];
 server.addListener('connection', function(socket){
     console.log('connection....');
     users.push(socket);
-
+    socket.send('已建立连接');
     socket.addListener('message',function(msg){
         console.log(msg);
         users.forEach(function(n, i){
