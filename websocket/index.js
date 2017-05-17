@@ -10,6 +10,7 @@ var userInfo = {
     name: '',
     msg: ''
 };
+
 //收集用户名字
 function getName(){
     userInfo.name = prompt("请输入您的昵称","");
@@ -28,7 +29,6 @@ var inputBox = document.querySelector('#inputBox'); //输入的消息
 
 //创建连接
 function creatWS(){
-    console.log(userInfo);
     socket = new WebSocket(winConfig.url);
     console.log("Clinet is running...");
     socket.onmessage = function (event) {
@@ -47,12 +47,6 @@ function creatWS(){
 }
 
 
-//离开响应
-window.onbeforeunload = function () {
-    socket.send("Client is Leaving");
-    return "Are you sure";
-};
-
 function init(){
     //键盘发送消息
     document.addEventListener('keyup', function (key) {
@@ -65,6 +59,12 @@ function init(){
     document.querySelector('#sendBtn').addEventListener('click', function () {
         sendMsg();
     });
+
+    //离开响应
+    window.onbeforeunload = function () {
+        socket.send("Client is Leaving");
+        return "Are you sure";
+    };
 }
 
 
@@ -80,7 +80,9 @@ function sendMsg() {
         inputBox.value = '';
 
         //发送消息给服务端
-        socket.send(val);
+        userInfo.msg = val;
+        console.log(userInfo);
+        socket.send(userInfo);
     }
 }
 
