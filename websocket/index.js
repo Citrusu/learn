@@ -4,6 +4,10 @@
 
 //if ("WebSocket" in window){alert('ok');}else{alert('no');}
 
+var socket = null;
+var msgBox = document.querySelector('#msgBox');     //显示的消息列表
+var inputBox = document.querySelector('#inputBox'); //输入的消息
+
 //创建用户信息
 var userInfo = {
     UUID: tools.generateUUID(),
@@ -23,27 +27,28 @@ function getName(){
 }
 getName();
 
-var socket = null;
-var msgBox = document.querySelector('#msgBox');     //显示的消息列表
-var inputBox = document.querySelector('#inputBox'); //输入的消息
-
 //创建连接
 function creatWS(){
     socket = new WebSocket(winConfig.url);
     console.log("Clinet is running...");
-    socket.onmessage = function (event) {
+    console.log(socket.readyState);
+    socket.addEventListener('message', function (event) {
         //console.log(event);
         receiveMsg(event);
-    };
+    });
 
-    socket.onopen = function (event) {
+    socket.addEventListener('open', function (event) {
         console.log("websocket is open");
         init();
-    };
+    });
 
-    socket.onerror = function (event) {
+    socket.addEventListener('close', function(){
+        console.log('closed');
+    });
+
+    socket.addEventListener('error', function (event) {
         alert("websocket create failed");
-    };
+    });
 }
 
 
@@ -63,6 +68,7 @@ function init(){
     //离开响应
     window.onbeforeunload = function () {
         socket.send("Client is Leaving");
+        socket.close();
         return "Are you sure";
     };
 }
@@ -82,7 +88,7 @@ function sendMsg() {
         //发送消息给服务端
         userInfo.msg = val;
         console.log(userInfo);
-        socket.send(userInfo);
+        socket.send(JSON.stringify(userInfo));
     }
 }
 
@@ -90,6 +96,7 @@ function sendMsg() {
 function receiveMsg(data) {
     //显示来自服务器的消息
     var msgItem = document.createElement('li');
+    console.log(data);
     msgItem.innerText = data.data;
     msgBox.appendChild(msgItem);
 }
