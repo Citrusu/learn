@@ -4,6 +4,20 @@
 
 //if ("WebSocket" in window){alert('ok');}else{alert('no');}
 
+var msg = new Vue({
+    el: '.ui-page-current',
+    data: {
+        //系统信息
+        sys: {
+            userNum: 1, //在线用户数
+        },
+        msgItems: []
+    },
+    methods: {
+
+    }
+});
+
 var socket = null;
 var msgBox = document.querySelector('#msgBox');     //显示的消息列表
 var inputBox = document.querySelector('#inputBox'); //输入的消息
@@ -16,11 +30,11 @@ var userInfo = {
 };
 
 //收集用户名字
-function getName(){
-    userInfo.name = prompt("请输入您的昵称","");
-    if (userInfo.name != null && userInfo.name != ""){
+function getName() {
+    userInfo.name = prompt("请输入您的昵称", "");
+    if (userInfo.name != null && userInfo.name != "") {
         creatWS();
-    }else{
+    } else {
         alert('请输入您的昵称');
         location.reload();
     }
@@ -28,10 +42,9 @@ function getName(){
 getName();
 
 //创建连接
-function creatWS(){
+function creatWS() {
     socket = new WebSocket(winConfig.url);
     console.log("Clinet is running...");
-    console.log(socket.readyState);
     socket.addEventListener('message', function (event) {
         receiveMsg(JSON.parse(event.data));
     });
@@ -41,7 +54,7 @@ function creatWS(){
         init();
     });
 
-    socket.addEventListener('close', function(){
+    socket.addEventListener('close', function () {
         console.log('closed');
     });
 
@@ -51,7 +64,7 @@ function creatWS(){
 }
 
 
-function init(){
+function init() {
     //键盘发送消息
     document.addEventListener('keyup', function (key) {
         if (key.keyCode == 13) {
@@ -77,11 +90,14 @@ function sendMsg() {
     var val = inputBox.value;
     if (val) {
         //显示自己的消息
-        var msgItem = document.createElement('li');
-        msgItem.innerText = val;
-        msgItem.setAttribute('class', 'right');
-        msgBox.appendChild(msgItem);
+
+        msg.msgItems.push({
+            type: 'local',
+            msg: val
+        });
         inputBox.value = '';
+
+        scrollToBottom(msgBox);
 
         //发送消息给服务端
         userInfo.msg = val;
@@ -93,8 +109,12 @@ function sendMsg() {
 //接收消息
 function receiveMsg(data) {
     //显示来自服务器的消息
-    var msgItem = document.createElement('li');
-    console.log(data);
-    msgItem.innerText = data.msg;
-    msgBox.appendChild(msgItem);
+    msg.msgItems.push(data);
+
+    scrollToBottom(msgBox);
+}
+
+//消息自动滚动到底部
+function scrollToBottom(node){
+    node.scrollTop = node.scrollHeight * 2;
 }

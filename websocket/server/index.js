@@ -5,7 +5,7 @@
 const ws = require('ws').Server;
 
 const server = new ws({port:3000});
-const msg = require('./msg'); //消息转码
+const msg = require('./msg'); //消息方法
 const users = [];
 
 server.addListener('connection', function(socket){

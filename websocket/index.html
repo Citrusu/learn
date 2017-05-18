@@ -3,13 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>hello</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="../etui/css/etui.css">
     <link rel="stylesheet" href="index.css">
+    <script src="../vue/vue/dist/vue.js"></script>
 </head>
 <body>
-<!--<h1>hello</h1>-->
-<ul id="msgBox"></ul>
-<textarea name="" id="inputBox" cols="30" rows="10"></textarea>
-<button id="sendBtn">发送</button>
+<div class="ui-page-group">
+    <!-- 单个page ,第一个.page默认被展示-->
+    <div class="ui-page ui-page-current">
+        <!-- 标题栏 开始 -->
+        <header class="ui-bar ui-bar-nav">
+            <!--<a class="ui-button-nav ui-pull-left" id="goBack" href="javascript:;" data-transition='slide-out'>-->
+                <!--<span class="ui-icon icon-fenlei"></span>-->
+            <!--</a>-->
+            <h1 class="ui-title">chat({{ sys.userNum }})</h1>
+            <!--<a class="ui-button-nav ui-pull-right" id="meun" href="javascript:;" data-transition='slide-out'>-->
+                <!--<span class="ui-icon icon-caidan"></span>-->
+            <!--</a>-->
+        </header>
+        <!-- 标题栏 结束-->
+
+
+        <!-- 页面内容区 开始-->
+        <div class="ui-content">
+            <div class="msg-box">
+                <ul id="msgBox">
+                    <li v-for="item in msgItems" v-bind:class="{'my-msg': !item.name}">
+                        <div class="msg-name">{{ item.name }}</div>
+                        <div class="msg-item">{{ item.msg }}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="msg-input">
+                <textarea name="" id="inputBox" cols="30" rows="10"></textarea>
+                <div class="ui-button ui-button-fill btn-submit" id="sendBtn">发送</div>
+            </div>
+        </div>
+        <!-- 页面内容区 结束-->
+    </div>
+    <!-- 单个page ,第一个.page默认被展示-->
+</div>
+
 
 <script src="config.js"></script>
 <script src="index.js"></script>
