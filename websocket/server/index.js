@@ -5,7 +5,7 @@
 const ws = require('ws').Server;
 
 const server = new ws({port:3000});
-
+const msg = require('./msg'); //消息转码
 const users = [];
 
 server.addListener('connection', function(socket){
@@ -13,27 +13,28 @@ server.addListener('connection', function(socket){
 
     users.push(socket);
 
-    socket.send('已建立连接');
+    socket.send('{"msg":"已建立连接"}');
 
     console.log(users.length);
     socket.addListener('message',function(resData){
-        //let resMsg = JSON.parse(resData);
         users.forEach(function(n, i){
             if(socket !== n){
-                let sendMsg = '';
-                n.send(resData.msg);
+                let user = msg.toObj(resData);
+                let sendMsg = {
+                    name: user.name,
+                    msg : user.msg
+                };
+                n.send(msg.toStr(sendMsg));
             }
         });
     });
 
-    socket.addEventListener('close', function(){
-        console.log('close');
+    socket.addListener('close', function(){
         users.forEach(function(n, i){
             if(socket === n){
                 users.splice(i, 1);
             }
         });
-        console.log(users.length);
     });
 });
 

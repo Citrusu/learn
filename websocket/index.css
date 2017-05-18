@@ -1,0 +1,35 @@
+body{
+    padding: 20px;
+}
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
+    float: right;
+    clear: both;
+    background-color: #78a2d6;
+    color: #fff;
+}
+ul{
+    width: 300px;
+    border: 1px solid #ddd;
+    height: 400px;
+    overflow-y: scroll;
+    padding: 0;
+}
+li{
+    list-style: none;
+    float: left;
+    clear: both;
+    padding: 3px 5px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    border-radius: 10px;
+}
+textarea{
+    width: 300px;
+    height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+}

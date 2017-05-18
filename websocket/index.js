@@ -33,8 +33,7 @@ function creatWS(){
     console.log("Clinet is running...");
     console.log(socket.readyState);
     socket.addEventListener('message', function (event) {
-        //console.log(event);
-        receiveMsg(event);
+        receiveMsg(JSON.parse(event.data));
     });
 
     socket.addEventListener('open', function (event) {
@@ -67,9 +66,8 @@ function init(){
 
     //离开响应
     window.onbeforeunload = function () {
-        socket.send("Client is Leaving");
+        //socket.send("Client is Leaving");
         socket.close();
-        return "Are you sure";
     };
 }
 
@@ -97,6 +95,6 @@ function receiveMsg(data) {
     //显示来自服务器的消息
     var msgItem = document.createElement('li');
     console.log(data);
-    msgItem.innerText = data.data;
+    msgItem.innerText = data.msg;
     msgBox.appendChild(msgItem);
 }

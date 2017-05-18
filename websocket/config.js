@@ -3,7 +3,7 @@
  */
 //配置
 window.winConfig = {
-    url: 'ws://192.168.9.142:3000/server',
+    url: 'ws://192.168.9.139:3000/server',
     port: '3000',
 };
 
