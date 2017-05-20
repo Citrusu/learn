@@ -33,13 +33,16 @@
         <!-- 页面内容区 开始-->
         <div class="ui-content">
             <div class="msg-box">
-                <ul id="msgBox">
-                    <li v-for="item in msgItems" v-bind:class="{'my-msg': !item.name}">
-                        <div class="msg-name">{{ item.name }}</div>
-                        <div class="msg-item">{{ item.msg }}</div>
-                    </li>
-                </ul>
+                <div v-for="item in msgItems" v-if="item.type=='tip'" class="msg-tip"><span>{{ item.data }}</span></div>
+                <div v-else-if="item.type=='newMsg' && localInfo.name !== item.name" class="msg-item">
+                    <div class="msg-name">{{ item.name }}</div>
+                    <div class="msg-content">{{ item.msg }}</div>
+                </div>
+                <div v-else-if="item.type=='local'" class="msg-item my-msg">
+                    <div class="msg-content">{{ item.msg }}</div>
+                </div>
             </div>
+
             <div class="msg-input">
                 <textarea name="" id="inputBox" cols="30" rows="10"></textarea>
                 <div class="ui-button ui-button-fill btn-submit" id="sendBtn">发送</div>

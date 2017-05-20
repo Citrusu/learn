@@ -3,24 +3,32 @@
     position: absolute;
     height: 80%;
     width: 100%;
-}
-.msg-box ul{
-    position: absolute;
-    width: 100%;
-    height: 100%;
     overflow-y: scroll;
-    padding: 0;
+    padding: .5rem;
 }
-.msg-box ul li{
+.msg-tip{
+    text-align: center;
+}
+.msg-tip > span{
+    text-align: center;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    display: inline-block;
+    margin: 0.3rem auto;
+    font-size: .6rem;
+    border-radius: .3rem;
+    padding: 0.1rem .2rem;
+    vertical-align: middle;
+}
+.msg-box .msg-item{
     display: block;
-    margin: 1rem .3rem;
+    margin: .1rem 0;
 }
 .msg-name{
     color: #999;
     font-size: .6rem;
 }
-.msg-item{
-    list-style: none;
+.msg-content{
     display: inline-block;
     padding: 3px 5px;
     border: 1px solid #ccc;
@@ -35,7 +43,7 @@
 .msg-box .my-msg{
     text-align: right;
 }
-.my-msg .msg-item{
+.my-msg .msg-content{
     background-color: #78a2d6;
     color: #fff;
     border: none;

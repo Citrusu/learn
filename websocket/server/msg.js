@@ -12,21 +12,12 @@ module.exports = {
     },
     send: function(data){
         if(typeof data === 'string'){
-            return data;
-        }else if( this.func[data.type] ){
-            this.func[data.type](data);
+            return this.toStr({
+                type: 'tip',
+                data: data
+            });
         }else{
-            console.log( 'err data type' );
-        }
-    },
-    func: {
-        //系统类消息
-        sysMsg: function(data){
-
-        },
-        //聊天消息
-        chatMsg: function(data){
-
+            return this.toStr(data);
         }
     }
 };

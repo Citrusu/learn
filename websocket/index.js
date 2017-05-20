@@ -9,12 +9,38 @@ var msg = new Vue({
     data: {
         //系统信息
         sys: {
-            userNum: 1, //在线用户数
+            userNum: 0, //在线用户数
         },
-        msgItems: []
+        localInfo: {
+            uuid: tools.generateUuid(),
+            name: '',
+            msg: ''
+        },
+        msgItems: [],
+        lineUsers:[]
     },
     methods: {
+        //接收消息,type 对应方法名
+        reciveMsg: function(msg){
+            this[msg.type](msg);
+            console.log(msg);
+        },
+        tip: function(msg){
+            this.msgItems.push(msg);
+        },
+        newMsg: function(msg){
+            this.msgItems.push(msg);
+            console.log(msg);
+        },
+        lineNum: function(msg){
+            this.sys.userNum = msg.num;
+        },
+        onLineUser: function(msg){
 
+        },
+        offLine: function(msg){
+
+        }
     }
 });
 
@@ -23,16 +49,17 @@ var msgBox = document.querySelector('#msgBox');     //显示的消息列表
 var inputBox = document.querySelector('#inputBox'); //输入的消息
 
 //创建用户信息
-var userInfo = {
-    UUID: tools.generateUUID(),
-    name: '',
-    msg: ''
-};
+// var userInfo = {
+//     uuid: tools.generateUuid(),
+//     name: '',
+//     msg: ''
+// };
 
 //收集用户名字
 function getName() {
-    userInfo.name = prompt("请输入您的昵称", "");
-    if (userInfo.name != null && userInfo.name != "") {
+    var name = prompt("请输入您的昵称", "");
+    if (name != null && name != "") {
+        msg.localInfo.name = name;
         creatWS();
     } else {
         alert('请输入您的昵称');
@@ -46,7 +73,7 @@ function creatWS() {
     socket = new WebSocket(winConfig.url);
     console.log("Clinet is running...");
     socket.addEventListener('message', function (event) {
-        receiveMsg(JSON.parse(event.data));
+        msg.reciveMsg(JSON.parse(event.data));
     });
 
     socket.addEventListener('open', function (event) {
@@ -97,12 +124,11 @@ function sendMsg() {
         });
         inputBox.value = '';
 
-        scrollToBottom(msgBox);
+        //scrollToBottom(msgBox);
 
         //发送消息给服务端
-        userInfo.msg = val;
-        console.log(userInfo);
-        socket.send(JSON.stringify(userInfo));
+        msg.localInfo.msg = val;
+        socket.send(JSON.stringify(msg.localInfo));
     }
 }
 
@@ -110,8 +136,8 @@ function sendMsg() {
 function receiveMsg(data) {
     //显示来自服务器的消息
     msg.msgItems.push(data);
-
-    scrollToBottom(msgBox);
+    console.log(data);
+    //scrollToBottom(msgBox);
 }
 
 //消息自动滚动到底部

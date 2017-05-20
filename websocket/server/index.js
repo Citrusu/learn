@@ -2,40 +2,53 @@
  * Created by Citrus on 2017/5/9.
  */
 
-const ws = require('ws').Server;
+var ws = require('ws').Server;
 
-const server = new ws({port:3000});
-const msg = require('./msg'); //消息方法
-const users = [];
+var server = new ws({port:3000});
+var msg = require('./msg');         //消息方法
+var allSockets = [];                //客户端连接
+var users = [];                     //用户信息
+
 
 server.addListener('connection', function(socket){
     console.log('connection....');
 
-    users.push(socket);
+    allSockets.push(socket);
 
-    socket.send('{"msg":"已建立连接"}');
+    socket.send(msg.send('已建立连接'));
+    msgToAllUser({type:'lineNum',num: allSockets.length});
 
-    console.log(users.length);
     socket.addListener('message',function(resData){
-        users.forEach(function(n, i){
-            if(socket !== n){
-                let user = msg.toObj(resData);
-                let sendMsg = {
-                    name: user.name,
-                    msg : user.msg
-                };
-                n.send(msg.toStr(sendMsg));
-            }
-        });
+        var user = msg.toObj(resData);
+        var sendMsg = {
+            type: 'newMsg',
+            name: user.name,
+            msg : user.msg
+        };
+        msgToAllUser(sendMsg);
     });
 
     socket.addListener('close', function(){
-        users.forEach(function(n, i){
+        allSockets.forEach(function(n, i){
             if(socket === n){
-                users.splice(i, 1);
+                allSockets.splice(i, 1);
+                return;
             }
         });
+        msgToAllUser({type:'lineNum',num: allSockets.length});
     });
 });
+
+//推送消息给所有在线用户
+function msgToAllUser(data){
+    allSockets.forEach(function(n, i){
+        n.send(msg.send(data));
+    });
+}
+
+//推送消息给当前用户
+function msgToOne(){
+
+}
 
 console.log('running......');
