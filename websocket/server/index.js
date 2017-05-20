@@ -14,7 +14,6 @@ server.addListener('connection', function(socket){
     console.log('connection....');
 
     allSockets.push(socket);
-
     socket.send(msg.send('已建立连接'));
     msgToAllUser({type:'lineNum',num: allSockets.length});
 

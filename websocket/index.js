@@ -13,8 +13,7 @@ var msg = new Vue({
         },
         localInfo: {
             uuid: tools.generateUuid(),
-            name: '',
-            msg: ''
+            name: ''
         },
         msgItems: [],
         lineUsers:[]
@@ -23,6 +22,7 @@ var msg = new Vue({
         //接收消息,type 对应方法名
         reciveMsg: function(msg){
             this[msg.type](msg);
+            scrollToBottom(msgBox);
             console.log(msg);
         },
         tip: function(msg){
@@ -40,20 +40,29 @@ var msg = new Vue({
         },
         offLine: function(msg){
 
-        }
+        },
+        send: function(data){
+            if(typeof data === 'string'){
+                return this.toStr({
+                    type: 'newMsg',
+                    data: data
+                });
+            }else{
+                return this.toStr(data);
+            }
+        },
+        toObj: function(data){
+            return JSON.parse(data);
+        },
+        toStr: function(data){
+            return JSON.stringify(data);
+        },
     }
 });
 
 var socket = null;
 var msgBox = document.querySelector('#msgBox');     //显示的消息列表
 var inputBox = document.querySelector('#inputBox'); //输入的消息
-
-//创建用户信息
-// var userInfo = {
-//     uuid: tools.generateUuid(),
-//     name: '',
-//     msg: ''
-// };
 
 //收集用户名字
 function getName() {
@@ -124,7 +133,7 @@ function sendMsg() {
         });
         inputBox.value = '';
 
-        //scrollToBottom(msgBox);
+        scrollToBottom(msgBox);
 
         //发送消息给服务端
         msg.localInfo.msg = val;
@@ -132,15 +141,10 @@ function sendMsg() {
     }
 }
 
-//接收消息
-function receiveMsg(data) {
-    //显示来自服务器的消息
-    msg.msgItems.push(data);
-    console.log(data);
-    //scrollToBottom(msgBox);
-}
 
 //消息自动滚动到底部
 function scrollToBottom(node){
-    node.scrollTop = node.scrollHeight * 2;
+    setTimeout(function(){
+        node.scrollTop = node.scrollHeight;
+    },0);
 }

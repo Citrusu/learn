@@ -19,6 +19,7 @@
     border-radius: .3rem;
     padding: 0.1rem .2rem;
     vertical-align: middle;
+    max-width: 70%;
 }
 .msg-box .msg-item{
     display: block;

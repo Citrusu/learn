@@ -32,7 +32,7 @@
 
         <!-- 页面内容区 开始-->
         <div class="ui-content">
-            <div class="msg-box">
+            <div class="msg-box" id="msgBox">
                 <div v-for="item in msgItems" v-if="item.type=='tip'" class="msg-tip"><span>{{ item.data }}</span></div>
                 <div v-else-if="item.type=='newMsg' && localInfo.name !== item.name" class="msg-item">
                     <div class="msg-name">{{ item.name }}</div>
