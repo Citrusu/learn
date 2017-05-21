@@ -36,11 +36,28 @@ var msg = new Vue({
             this.sys.userNum = msg.num;
         },
         onLine: function(msg){
-            console.log(msg);
+            this.msgItems.push({type: 'tip', data: msg.userName + ' 已加入'});
         },
         offLine: function(msg){
             this.msgItems.push({type: 'tip', data: msg.userName + ' 已离开'});
-        }
+        },
+        send: function(data){
+            if(typeof data === 'string'){
+                return this.toStr({
+                    type: 'newMsg',
+                    user: msg.localInfo,
+                    msg : data
+                });
+            }else{
+                return this.toStr(data);
+            }
+        },
+        toObj: function(data){
+            return JSON.parse(data);
+        },
+        toStr: function(data){
+            return JSON.stringify(data);
+        },
     }
 });
 
@@ -71,6 +88,7 @@ function creatWS() {
 
     socket.addEventListener('open', function (event) {
         console.log("websocket is open");
+        socket.send(msg.send({type: 'onLine', user: msg.localInfo})); //通知服务端已经上线
         init();
     });
 
@@ -121,8 +139,7 @@ function sendMsg() {
         scrollToBottom(msgBox);
 
         //发送消息给服务端
-        msg.localInfo.msg = val;
-        socket.send(JSON.stringify(msg.localInfo));
+        socket.send(msg.send(val));
     }
 }
 
