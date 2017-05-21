@@ -4,7 +4,7 @@
 //配置
 window.winConfig = {
     url: 'ws://192.168.9.142:3000/server',
-    //url: 'ws://hellost.cn:3000/websocket/server',
+    //url: 'ws://chat.hicitrus.com:3000/websocket/server',
     port: '3000',
 };
 

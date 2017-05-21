@@ -22,7 +22,6 @@ var msg = new Vue({
         //接收消息,type 对应方法名
         reciveMsg: function(msg){
             this[msg.type](msg);
-            scrollToBottom(msgBox);
             console.log(msg);
         },
         tip: function(msg){
@@ -30,33 +29,18 @@ var msg = new Vue({
         },
         newMsg: function(msg){
             this.msgItems.push(msg);
+            scrollToBottom(msgBox);
             console.log(msg);
         },
         lineNum: function(msg){
             this.sys.userNum = msg.num;
         },
-        onLineUser: function(msg){
-
+        onLine: function(msg){
+            console.log(msg);
         },
         offLine: function(msg){
-
-        },
-        send: function(data){
-            if(typeof data === 'string'){
-                return this.toStr({
-                    type: 'newMsg',
-                    data: data
-                });
-            }else{
-                return this.toStr(data);
-            }
-        },
-        toObj: function(data){
-            return JSON.parse(data);
-        },
-        toStr: function(data){
-            return JSON.stringify(data);
-        },
+            this.msgItems.push({type: 'tip', data: msg.userName + ' 已离开'});
+        }
     }
 });
 
@@ -90,7 +74,8 @@ function creatWS() {
         init();
     });
 
-    socket.addEventListener('close', function () {
+    socket.addEventListener('close', function (event) {
+        msg.msgItems.push({type:'tip', data: '服务器已关闭'});
         console.log('closed');
     });
 
@@ -123,7 +108,7 @@ function init() {
 
 //发送消息
 function sendMsg() {
-    var val = inputBox.value;
+    var val = inputBox.value.replace(/(^\s+)|(\s+$)/g,""); //去除前后空字符
     if (val) {
         //显示自己的消息
 
