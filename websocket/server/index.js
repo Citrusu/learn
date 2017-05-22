@@ -5,9 +5,10 @@
 const ws = require('ws').Server;
 
 const server = new ws({port:3000});
-const msg = require('./msg');         //工具方法
+const msg = require('./msg');       //工具方法
 let allSockets = [];                //客户端连接
 let users = [];                     //用户信息
+let rMsgs = [];                     //收到的消息
 
 
 server.addListener('connection', function(socket){
@@ -38,10 +39,8 @@ server.addListener('connection', function(socket){
         });
 
         //通知仍在线的客户端
-        console.log(users);
-        msgToAllUser({type:'offLine',userName: users[offUserIndex].name});
-        msgToAllUser({type:'lineNum',num: allSockets.length});
-        users.splice(offUserIndex, 1); //删除离开的客户端用户信息
+        console.log(rMsgs);
+        msgFuncs.offLine(offUserIndex);
     });
 });
 
@@ -57,13 +56,19 @@ let msgFuncs = {
             name: user.name,
             msg : msg.msg
         };
-        users.push(user);
+        rMsgs.push(user);
         msgToAllUser(sendMsg);
     },
     onLine: function(msg){
         let user = msg.user;
+        users.push(user);
         msgToAllUser({type: msg.type, userName: user.name});
     },
+    offLine: function(idx){
+        msgToAllUser({type:'offLine',userName: users[idx].name});
+        msgToAllUser({type:'lineNum',num: allSockets.length});
+        users.splice(idx, 1); //删除离开的客户端用户信息
+    }
 };
 
 //推送消息给所有在线用户
