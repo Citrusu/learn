@@ -57,6 +57,9 @@ let msgFuncs = {
             msg : msg.msg
         };
         rMsgs.push(user);
+        if(rMsgs.length > 10){
+            users.splice(0, 1);
+        }
         msgToAllUser(sendMsg);
     },
     onLine: function(msg){

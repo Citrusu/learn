@@ -22,7 +22,7 @@ var msg = new Vue({
         //接收消息,type 对应方法名
         reciveMsg: function(msg){
             this[msg.type](msg);
-            console.log(msg);
+            //console.log(msg);
         },
         tip: function(msg){
             this.msgItems.push(msg);
@@ -30,7 +30,6 @@ var msg = new Vue({
         newMsg: function(msg){
             this.msgItems.push(msg);
             scrollToBottom(msgBox);
-            console.log(msg);
         },
         lineNum: function(msg){
             this.sys.userNum = msg.num;
