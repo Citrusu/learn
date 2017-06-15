@@ -1,5 +1,5 @@
 {
-  "name": "youguess",
+  "name": "koa2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "citrus",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-convert": "^1.2.0"
+  }
 }
