@@ -33,55 +33,39 @@ imgList.forEach(function (n, i) {
 
 function init() {
     // init config position
-    var position = {
-        w: 50,
-        h: 50
-    };
-    position.x = w / 2 - (position.w / 2);
-    position.y = h - position.h;
-
     var imgs = [];
 
     var endTime = false;
     var coutTime = new Date();
 
     // init insert img
-    var startDrawImg = function(){
+    var startDrawImg = function () {
         var sanimation = requestAnimationFrame(startDrawImg);
         ctx.clearRect(0, 0, w, h);
 
         var p = getNewPack();
-        var lastAngle = Math.PI/180;
-        imgs.forEach(function(p, i){
-            ctx.rotate(lastAngle);
-            var nowAngle = p.r * Math.PI/180;
-            lastAngle = nowAngle - lastAngle;
-            ctx.rotate(lastAngle);
+        imgs.forEach(function (p, i) {
             drawImg(p.img, p);
-            // ctx.rotate(Math.PI/180);
-            if(p.d > 7){
+            if (p.d > 7) {
                 p.x += 3;
-                p.r += .001;
-            }else if(p.d < -7){
+            } else if (p.d < -7) {
                 p.x -= 3;
-                p.r -= .001;
             }
             p.y -= p.s;
 
-
-            if(p.y + p.h < -h){
+            if (p.y + p.h < - h) {
                 imgs.splice(i, 1);
             }
         });
-        lastAngle = Math.PI/180;
+
         // console.log(imgs.length)
         var compareTime = new Date();
-        if(compareTime - coutTime > 200){
+        if (compareTime - coutTime > 200) {
             //console.log(compareTime - coutTime);
             imgs.push(p);
         }
 
-        if(endTime){
+        if (endTime) {
             cancelAnimationFrame(sanimation);
             // ctx.clearRect(0,0,w,h);
         }
@@ -89,11 +73,14 @@ function init() {
 
     startDrawImg();
 
-    setTimeout(function(){
+    //红包出现的总时间
+    setTimeout(function () {
         endTime = true;
+        clearInterval(packInterval);
     }, 5000);
 
-    setInterval(function(){
+    //红包出现间隔
+    var packInterval = setInterval(function () {
         coutTime = new Date();
     }, 400);
 
@@ -103,28 +90,27 @@ function init() {
     }
 
     //随机数
-    function getRandom(a,b){
-        return Math.round(Math.random()*(b-a)+a);
+    function getRandom(a, b) {
+        return Math.round(Math.random() * (b - a) + a);
     }
 
-    // new position, return not repeat position
-    function getNewPack(){
-        var sp = JSON.stringify(position);
-        var p = JSON.parse(sp);
+    /*
+    * new position, return not repeat position
+    * return obj
+    * obj.s speed
+    * obj.d direction
+    * */
+    function getNewPack() {
+        var p = {};
         p.d = getRandom(-50, 50);
         p.s = getRandom(5, 13);
-        p.r = getRandom(-1, 1);
-        var width = getRandom(25,60);
+        var width = getRandom(25, 60);
         var height = width * 1.2;
         p.w = width;
         p.h = height;
-        p.img = loadImgList[getRandom(0, len-1)];
+        p.x = w / 2 - (p.w / 2);
+        p.y = h - p.h;
+        p.img = loadImgList[getRandom(0, len - 1)];
         return p;
     }
-
-    /*///0
-    * 5  5
-    * 3  2
-    * 2  0
-    * */
 }
