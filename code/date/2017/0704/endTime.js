@@ -23,7 +23,7 @@ function endAct(list){
     var S = litter(nowTime.getSeconds());
 
     function litter(v){
-        return v > 10 ? v.toString() : '0' + v.toString();
+        return v >= 10 ? v.toString() : '0' + v.toString();
     }
     var now = Y+M+D+H+Min+S;
 
