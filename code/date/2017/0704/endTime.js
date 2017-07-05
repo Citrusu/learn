@@ -25,7 +25,7 @@ function endAct(list){
     function litter(v){
         return v >= 10 ? v.toString() : '0' + v.toString();
     }
-    var now = Y+M+D+H+Min+S;
+    var now = parseInt(Y+M+D+H+Min+S);
 
     l.forEach(function(n){
         var end = n.end;
