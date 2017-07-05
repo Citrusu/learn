@@ -31,11 +31,7 @@ function endAct(list){
         var end = n.end;
         if(now >= end){
             document.querySelectorAll('.'+n.cls).forEach(function(m){
-                if(n['func']){
-                    n['func'](m);
-                }else{
-                    m.style.display = 'none';
-                }
+                n['func'] ? n['func'](m) : m.style.display = 'none';
             })
         }
     });
