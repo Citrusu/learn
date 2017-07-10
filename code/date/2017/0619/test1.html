@@ -7,24 +7,47 @@
 <body>
 <div id="box"></div>
 <script>
-    var cvs = document.createElement('canvas');
-    cvs.height = 500;
-    cvs.width = 500;
-    document.querySelector('#box').appendChild(cvs);
-    var ctx = cvs.getContext('2d');
-    var img = document.createElement('img');
-    var cx = cvs.width / 2;
-    var cy = cvs.height / 2;
-    img.onload = function(){
-        ctx.drawImage(img, cx - img.width / 2, cy - img.height / 2);
+    var imgSrc = '../../../../img/';
+    var imgList = ['head1.png', 'head2.png', 'head3.png', 'head4.png', 'head5.png'];
+
+    var loadImgList = [];
+    var len = imgList.length;
+    var index = 1;
+
+    imgList.forEach(function (n, i) {
+        var img = document.createElement('img');
+        img.src = imgSrc + n;
+        img.onload = function(){
+            loadImgList.push(img);
+            index += 1;
+            if(index > len){
+                init();
+            }
+        };
+    });
+
+    function init(){
+        var cvs = document.createElement('canvas');
+        cvs.height = 500;
+        cvs.width = 500;
+        document.querySelector('#box').appendChild(cvs);
+        var ctx = cvs.getContext('2d');
+        var img = loadImgList[1];
+        var img1 = loadImgList[2];
+        var cx = cvs.width / 2;
+        var cy = cvs.height / 2;
+
+
+        ctx.drawImage(img, cx - img.width / 2, cy - img.height / 2, 500, 500);
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(45 * Math.PI / 180);
         ctx.translate(-cx, -cy);
-        ctx.drawImage(img, cx - img.width / 2, cy - img.height / 2);
+        ctx.drawImage(img1, cx - img.width / 2, cy - img.height / 2, 500, 500);
         ctx.restore();
-    };
-    img.src = '../../../../img/head2.png';
+
+
+    }
 </script>
 </body>
 </html>
