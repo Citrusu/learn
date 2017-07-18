@@ -5,19 +5,27 @@ const fs = require('fs');
 let code = 'abcdefghijklmnopqrstuvwxyz';
 let names = [
     '.com',
-    '.me',
-    '.cc',
-    '.xyz',
-    '.top',
-    '.cn',
+    // '.me',
+    // '.cc',
+    // '.xyz',
+    // '.top',
+    // '.cn',
 ];
 let len = code.length;
 
 let text = '';
+let count = 0;
+let block = 500;
 names.forEach(function(n, i){
     for(let i = 0; i < len; i++){
         for(let j = 0; j < len; j++){
-            text+= code[i] + code[j] + n + '\r\n';
+            for(let m = 0; m < len; m++){
+                text+= code[i] + code[j] + code[m] + n + '\r\n';
+                count += 1;
+                if(count/block === 1){
+                    text += count + ':====================' + '\r\n';
+                }
+            }
         }
     }
 });
