@@ -1,15 +1,17 @@
 /*
-    * @param 过期的回调方法
-    * @param 自定缓存的 key，如果不指定可能会冲突
-    * @param 过期时间/秒，默认一天
-    * */
+ * @param 过期的回调方法
+ * @param 自定缓存的 key，如果不指定可能会冲突
+ * @param 过期时间/秒，默认一天
+ * */
 function recordLocalStorage(func, name, time) {
-    var compareTime = time || 86400;//过期时间、秒
+    var compareTime = time || 5; //过期时间、秒
     var cacheName = name || 'thisismytestcache';
     var cacheInfo = JSON.parse(localStorage.getItem(cacheName));
     //存在
     if (cacheInfo) {
         var now = nowData();
+        console.log(cacheInfo.time);
+        console.log(now);
         console.log(parseInt(now) - parseInt(cacheInfo.time));
         if (parseInt(now) - parseInt(cacheInfo.time) > compareTime) {
             console.log('overTime');
@@ -18,12 +20,14 @@ function recordLocalStorage(func, name, time) {
             }
         }
     } else {
-        localStorage.setItem(cacheName, JSON.stringify({ time: nowData() }));
         console.log('nullTime');
         if (func) {
             func();
         }
     }
+    localStorage.setItem(cacheName, JSON.stringify({
+        time: nowData()
+    }));
 
     function nowData() {
         var nowTime = new Date();
