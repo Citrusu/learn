@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>receive</title>
+</head>
+<body>
+    <iframe id="ifm" src="http://192.168.9.99:5000/" frameborder="1"></iframe>
+    <script>
+        var ifm = document.querySelector('#ifm');
+        
+        window.addEventListener('message', function(evt){
+            alert(JSON.stringify(evt.data));
+        })
+
+        setTimeout(function(){
+            ifm.contentWindow.postMessage('getGps', '*');
+        }, 1000)
+    </script>
+</body>
+</html>

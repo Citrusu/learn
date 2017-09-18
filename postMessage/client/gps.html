@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GPS</title>
+</head>
+<body>
+    <script>
+        function getGps(func){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(p){
+                    //成功获取位置
+                    var position = {
+                        lng: p.coords.longitude,
+                        lat: p.coords.latitude
+                    };
+                    console.log(position);
+                    parent.postMessage(position, '*');
+                }, function(err){
+                    console.log('GPSerr'+err)
+                });
+            }else {
+                alert( "OMG ! 您的设备不支持 GPS");
+            }
+        }
+        // getGps();
+        // setInterval(getGps, 3000);
+        window.addEventListener('message', function(evt){
+            var func = window[evt.data];
+            if(func){
+                func();
+            }
+        })
+
+    </script>
+</body>
+</html>
