@@ -1,0 +1,31 @@
+.main-color {
+  color: #f00;
+}
+.ui-abs {
+  position: absolute;
+  border: 1px solid #f00;
+  margin: auto;
+}
+.ui-abs-center {
+  position: absolute;
+  border: 1px solid #f00;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+.ui-content {
+  font-size: .7rem;
+}
+.ui-content h1 {
+  font-weight: normal;
+}
+.ui-content h1 span {
+  color: #999;
+  font-size: .6rem;
+}
+.ui-button {
+  margin-top: 0.25rem;
+}
+.ui-button-box {
+  margin-top: 0.5rem;
+}
