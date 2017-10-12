@@ -1,39 +1,5 @@
-// 变量
-@main-color: #f00;
-
-.main-color {
-    color: @main-color;
-}
-
-// 混合
-.ui-abs{
-    position: absolute;
-    border: 1px solid @main-color;
-    margin: auto;
-}
-.ui-abs-center{
-    .ui-abs;
-    left: 0;
-    right: 0;
-}
-
-// 嵌套
-.ui-content{
-    font-size: .7rem;
-    h1 {
-        font-weight: normal;
-        span {
-            color: #999;
-            font-size: .6rem;
-        }
-    }
-}
-
-// 计算
-@main-margin: .25rem;
-.ui-button{
-    margin-top: @main-margin;
-}
-.ui-button-box{
-    margin-top: @main-margin * 2;
-}
+@import 'vars.less';
+@import 'content.less';
+@import 'bar.less';
+@import 'theme.less';
+@import 'button.less';

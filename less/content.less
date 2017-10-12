@@ -1,0 +1,24 @@
+// 嵌套
+/* content */ 
+.ui-content{
+    font-size: .7rem;
+    h1 {
+        font-weight: normal;
+        span {
+            color: #999;
+            font-size: .6rem;
+        }
+    }
+}
+
+// 混合
+.ui-abs{
+    position: absolute;
+    border: 1px solid @main-color;
+    margin: auto;
+}
+.ui-abs-center{
+    .ui-abs;
+    left: 0;
+    right: 0;
+}

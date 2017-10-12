@@ -1,0 +1,22 @@
+// 命名空间
+/* bar */ 
+#header{
+    .ui-button{
+        border: none;
+    }
+    .ui-cell{
+        border-top: none;
+        &:before{
+            border-top: none;
+        }
+    }
+}
+
+.ui-button-none{
+    border:  @main-border;
+    color: #333;
+    #header > .ui-button;
+}
+.ui-cell-none{
+    #header > .ui-cell;
+}
