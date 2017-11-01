@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/learn/assets/plugins/jquery/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <iframe src="" frameborder="0" style="height: 500px;"></iframe>
+</body>
+<script>
+    $.ajaxPrefilter( function (options) {
+        if (options.crossDomain && $.support.cors) {
+        var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+        options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+        //options.url = "http://cors.corsproxy.io/url=" + options.url;
+        }
+    });
+
+    var share_link="http://mp.weixin.qq.com/s/h9JfZDg0ri3SZi2npYna7Q";//微信文章地址
+    $.get(
+        share_link,
+        function (response) {
+        console.log(response);
+        // $('body').html(response);
+        var html = response;
+        html=html.replace(/data-src/g, "src"); 
+        var html_src = 'data:text/html;charset=utf-8,' + html;
+        $("iframe").attr("src" , html_src);
+    });
+</script>
+</html>
