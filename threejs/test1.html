@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Three.js的360X180度全景图预览插件</title>
+    <link rel="stylesheet" href="http://photo-sphere-viewer.js.org/dist/Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css">
+    <script src="Photo-Sphere-Viewer/three.min.js"></script>
+    <script src="Photo-Sphere-Viewer/D.min.js"></script>
+    <script src="Photo-Sphere-Viewer/doT.min.js"></script>
+    <script src="Photo-Sphere-Viewer/uevent.min.js"></script>
+    <script src="Photo-Sphere-Viewer/photo-sphere-viewer.min.js"></script>
+</head>
+
+<body>
+
+
+    <div id="photosphere"></div>
+    <div id="psv-marker-circl1">
+
+    </div>
+
+    <script type="text/javascript">
+
+        var photosphere = document.getElementById('photosphere');
+        var PSV = new PhotoSphereViewer({
+            // 全景图片路径
+            // panorama: 'http://photo-sphere-viewer.js.org/assets/Bryce-Canyon-National-Park-Mark-Doliner.jpg',
+            panorama: 'Photo-Sphere-Viewer/examples/2.jpg',
+
+            // 容器
+            container: photosphere,
+
+            // 关闭动画
+            time_anim: false,
+
+            // 显示导航栏
+            navbar: true,
+
+            // 设置画布大小
+            size: {
+                width: '100%',
+                height: '500px'
+            },
+            // 标记列表
+            markers: [{
+                // 当单击时打开面板的图像标记
+                id: 'image',
+                longitude: 5.69810,
+                latitude: -0.13770,
+                image: 'http://photo-sphere-viewer.js.org/assets/pin-blue.png',
+                width: 32,
+                height: 32
+            }
+            ]
+        });
+        /**
+         * 当用户点击某个地方时，创建一个新的标记
+         */
+        PSV.on('click', function (e) {
+            console.log(e)
+        });
+
+        /**
+         * 当用户点击它时，删除一个生成的标记
+         */
+        PSV.on('select-marker', function (marker) {
+            console.log(marker);
+        });
+    </script>
+
+</body>
+
+</html>

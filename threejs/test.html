@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Three.js的360X180度全景图预览插件</title>
+<link rel="stylesheet" href="http://photo-sphere-viewer.js.org/dist/Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css">
+<!-- <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<!-- <script src="http://photo-sphere-viewer.js.org/dist/three.js/three.min.js"></script> -->
+<script src="Photo-Sphere-Viewer/three.min.js"></script>
+<script src="Photo-Sphere-Viewer/D.min.js"></script>
+<script src="Photo-Sphere-Viewer/doT.min.js"></script>
+<script src="Photo-Sphere-Viewer/uevent.min.js"></script>
+<script src="Photo-Sphere-Viewer/photo-sphere-viewer.min.js"></script>
+<!-- <script src="Photo-Sphere-Viewer/photo-sphere-viewer.js"></script> -->
+    <!--[if IE]>
+        <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    
+            <div id="photosphere"></div>
+    <div id="psv-marker-circl1">
+        fdgfdgfg
+    </div>
+    <svg width="500" height="400">
+        <rect id="svn-link" x="10" y="10" width="200" height="200" style="fill:orange; stroke-width:5; stroke:rgb(222, 0, 0)" />
+</svg>
+    
+<script type="text/template" id="lorem-content">
+  <h1>HTML Ipsum Presents</h1>
+
+  <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas.
+    Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
+    egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et
+    sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet,
+    wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac
+    dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+  <!-- <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3238538.6948248185!2d-112.5001998515625!3d37.56365195744152!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6be9d8fbbeac6d06!2sParc+national+de+Bryce+Canyon!5e0!3m2!1sfr!2sfr!4v1454251445371"
+    width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+
+  <h2>Header Level 2</h2>
+
+  <ol>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+  </ol>
+
+  <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet
+    congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis,
+    tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+
+  <h3>Header Level 3</h3>
+
+  <ul>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+  </ul>
+</script>
+    <script type="text/javascript">
+    
+function hello(){
+    window.location.href = "http://www.baidu.com";
+}
+
+var photosphere = document.getElementById('photosphere');
+var PSV = new PhotoSphereViewer({
+    // 全景图片路径
+    // panorama: 'http://photo-sphere-viewer.js.org/assets/Bryce-Canyon-National-Park-Mark-Doliner.jpg',
+    panorama: 'Photo-Sphere-Viewer/examples/2.jpg',
+
+    // 容器
+    container: photosphere,
+
+    // 关闭动画
+    time_anim: false,
+
+    // 显示导航栏
+    navbar: true,
+
+    // 设置画布大小
+    size: {
+        width: '100%',
+        height: '500px'
+    },
+    // 标记列表
+    markers: [{
+            // 当单击时打开面板的图像标记
+            id: 'image',
+            longitude: 5.69810,
+            latitude: -0.13770,
+            image: 'http://photo-sphere-viewer.js.org/assets/pin-blue.png',
+            width: 32,
+            height: 32,
+            anchor: 'bottom center',
+            tooltip: 'A image marker. <b>Click me!</b>',
+                        content: document.getElementById('lorem-content').innerHTML
+        },
+        {
+            // 具有自定义样式的html标记
+            id: 'text',
+            longitude: 0,
+            latitude: 0,
+                    html: 'HTML <a href="javascript:;" onclick="top.hello();">markerd</a> ♥',
+            anchor: 'bottom right',
+            style: {
+                maxWidth: '100px',
+                color: 'white',
+                fontSize: '20px',
+                fontFamily: 'Helvetica, sans-serif',
+                textAlign: 'center'
+            },
+            tooltip: {
+                content: 'An HTML marker',
+                position: 'right'
+            }
+        },
+        {
+            // 多边形标记
+            id: 'polygon',
+            polygon_px: [3184, 794, 3268, 841, 3367, 1194, 3327, 1307, 3065, 1221, 3097, 847],
+            svgStyle: {
+                fill: 'rgba(200, 0, 0, 0.2)',
+                stroke: 'rgba(200, 0, 50, 0.8)',
+                'stroke-width': '2px'
+            },
+            tooltip: {
+                content: 'A dynamic polygon marker',
+                position: 'right bottom'
+            }
+        },
+        {
+            // 圆圈标记
+            id: 'circle',
+            circle: 20,
+            x: 2500,
+            y: 1000,
+            tooltip: 'A circle marker'
+        },
+        {
+            // 圆圈标记
+            id: 'circle2',
+            circle: 30,
+            x: 2000,
+            y: 1200,
+            tooltip: 'A circle marker'
+        }
+    ]
+});
+/**
+ * 当用户点击某个地方时，创建一个新的标记
+ */
+PSV.on('click', function (e) {
+    PSV.addMarker({
+        id: '#' + Math.random(),
+        longitude: e.longitude,
+        latitude: e.latitude,
+        image: 'Photo-Sphere-Viewer/examples/overlay.png',
+        width: 32,
+        height: 32,
+        anchor: 'bottom center',
+        tooltip: 'Generated pin',
+        data: {
+            generated: true
+        }
+    });
+});
+
+/**
+ * 当用户点击它时，删除一个生成的标记
+ */
+PSV.on('select-marker', function (marker) {
+    console.log(marker);
+    if (marker.data && marker.data.generated) {
+        PSV.removeMarker(marker);
+    }
+});
+// 跳转链接
+$("#psv-marker-circl1").wrap("<a href='http://www.cnblogs.com/yizihan/' ></a>");
+
+$("#svn-link").wrap("<a xlink:href='http://www.cnblogs.com/yizihan/' ></a>")
+    </script>
+    
+</body>
+</html>
