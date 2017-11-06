@@ -4,14 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>基于Three.js的360X180度全景图预览插件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0 ,user-scalable=0">
+    <title>d</title>
     <link rel="stylesheet" href="http://photo-sphere-viewer.js.org/dist/Photo-Sphere-Viewer/dist/photo-sphere-viewer.min.css">
     <script src="Photo-Sphere-Viewer/three.min.js"></script>
     <script src="Photo-Sphere-Viewer/D.min.js"></script>
     <script src="Photo-Sphere-Viewer/doT.min.js"></script>
     <script src="Photo-Sphere-Viewer/uevent.min.js"></script>
+    <script src="Photo-Sphere-Viewer/DeviceOrientationControls.js"></script>
     <script src="Photo-Sphere-Viewer/photo-sphere-viewer.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,11 +31,34 @@
     </div>
 
     <script type="text/javascript">
+    
+        var markes = [{
+                // 当单击时打开面板的图像标记
+                id: 'image',
+                longitude: 5.69810,
+                latitude: -0.13770,
+                image: '/learn/assets/img/head5.png',
+                width: 60,
+                height: 60,
+                data: {
+                    id: 'a'
+                }
+            },
+            {
+                id: 'image1',
+                longitude: 4.680780411629247,
+                latitude: -0.3070550827188119,
+                image: '/learn/assets/img/head6.png',
+                width: 60,
+                height: 60,
+                data: {
+                    id: 'b'
+                }
+            }];
 
         var photosphere = document.getElementById('photosphere');
         var PSV = new PhotoSphereViewer({
             // 全景图片路径
-            // panorama: 'http://photo-sphere-viewer.js.org/assets/Bryce-Canyon-National-Park-Mark-Doliner.jpg',
             panorama: 'Photo-Sphere-Viewer/examples/2.jpg',
 
             // 容器
@@ -42,20 +73,16 @@
             // 设置画布大小
             size: {
                 width: '100%',
-                height: '500px'
+                height: window.innerHeight
             },
+            default_fov: 120,
+            gyroscope: true,
+            allow_scroll_to_zoom: false,
             // 标记列表
-            markers: [{
-                // 当单击时打开面板的图像标记
-                id: 'image',
-                longitude: 5.69810,
-                latitude: -0.13770,
-                image: 'http://photo-sphere-viewer.js.org/assets/pin-blue.png',
-                width: 32,
-                height: 32
-            }
-            ]
+            markers: markes
         });
+
+        PSV.zoom = function(){}
         /**
          * 当用户点击某个地方时，创建一个新的标记
          */
@@ -66,9 +93,22 @@
         /**
          * 当用户点击它时，删除一个生成的标记
          */
-        PSV.on('select-marker', function (marker) {
-            console.log(marker);
-        });
+        var myClick = function (m){
+            console.log(m.data.id);
+            // alert(22)
+        }
+        PSV.off('select-marker', myClick);
+        PSV.on('select-marker', myClick);
+
+        
+        $('#photosphere').on('click', '#psv-marker-image', function(){
+            document.title+= 1;
+        })
+
+        
+        setTimeout(function(){
+            //PSV.startGyroscopeControl();
+        }, 3000)
     </script>
 
 </body>
