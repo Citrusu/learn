@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="/learn/assets/img/head5.png" alt="" id="img">
+    <div id="showImg"></div>
+    <input type="file" id="fileUp">
+    <input type="text" id="fileSave">
+
+    <script>
+        var img = document.querySelector('#img');
+        var fileUp = document.querySelector('#fileUp');
+        var fileSave = document.querySelector('#fileSave');
+        var imgBox = document.querySelector('#showImg');
+
+        fileUp.addEventListener('change', (e) => {
+            console.log('changed');
+            var file = e.target.files[0];
+            var render = new FileReader();
+            
+            render.onload = (data) => {
+                var result = data.target.result;
+                var img = document.createElement('img');
+                img.src = result;
+                imgBox.appendChild(img);
+            };
+            render.readAsDataURL(file);
+        });
+
+        
+        setTimeout(() => {
+            var cvs = document.createElement('canvas');
+            cvs.width = img.width;
+            cvs.height = img.height;
+            var ctx = cvs.getContext('2d');
+            // imgBox.appendChild(cvs);
+            ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
+            var imgData = cvs.toDataURL("image/png");
+            fileUp.value = imgData;
+            // console.log(imgData);
+        },1000)
+
+    </script>
+</body>
+</html>
