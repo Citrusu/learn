@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="foo">
+
+    <script>
+        function bindData(obj, property, dom){
+            Object.defineProperty(obj, property, {
+                get: function(){
+                    return dom.value;
+                },
+                set: function(val){
+                    dom.value = val;
+                },
+                configurable: true
+            })
+        };
+
+        var user = {
+
+        }
+
+        bindData(user, 'name', document.querySelector('#foo'));
+        let names = [
+            'anna',
+            'bell',
+            'carls',
+            // 'dav',
+            // 'eller',
+            // 'focus',
+            // 'geoge',
+            // 'hebe',
+            // 'iliy',
+            // 'jack',
+            // 'kate',
+            // 'lucus',
+            // 'moby',
+            // 'noman',
+            // 'osca',        
+        ]
+
+        let foo = document.querySelector('#foo');
+
+        //set name
+        let idx = 0;
+        function setName(func, next){
+            let timer = setInterval(() => {
+                func(idx);
+                if(idx >= names.length -1){
+                    clearInterval(timer);
+                    idx = 0;
+                    if(next) next(idx);
+                }else{
+                    idx += 1;
+                }
+            },1000)
+        }
+        setName(idx => {
+            console.log('now set username');
+            user.name = names[idx];
+            console.log('fooVal:' + foo.value);
+        }, (idx) => {
+            // setName(idx => {
+                console.log('now edit fooname');
+                foo.name = names[idx];
+                console.log(user.name)
+            // })
+            
+        })
+
+    </script>
+</body>
+</html>
