@@ -13,6 +13,7 @@ module.exports = [
 
     //特殊
     [/__PUBLIC__\/Plugins\/LhgDialog/g, '__STATIC__/admin/plugins/lhgDialog'],
+    [/{\$NOW_THEME_URL}\/Assets\/Css\/module_form.css/g, '__STATIC__/admin/css/common/module_form.css'],
 
     //变量
     [/<include file="Public/g, '<include file="pub'],

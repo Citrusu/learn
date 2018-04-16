@@ -3,7 +3,7 @@ let replaceList = require('./admin.js');
 
 // 基本设置
 let config = {
-    baseDir : './Group/', //替换目录
+    baseDir : '/Volumes/env/ydkos/application/admin/view/company/', //替换目录
     recusion: true,     //递归目录
 }
 
