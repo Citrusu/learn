@@ -1,7 +1,14 @@
 /*
 * 后台需要替换的字段，需要注意顺序的优先级
 */ 
-module.exports = [
+
+// 基本设置
+let config = {
+    baseDir : '/Volumes/env/ydkos/application/mobile/view/find/index.html', //替换的目录或文件
+    recusion: true,     //递归目录
+}
+
+let list = [
     //删除
     [/<script src="__PUBLIC__\/Js\/jquery.timer.js"><\/script>/g, ''],
     [/<script src="__PUBLIC__\/Js\/jquery.timer.js" type="text\/javascript"><\/script>/g, ''],
@@ -26,3 +33,8 @@ module.exports = [
     [/{\$/g, '{\\$'],
     [/{:U\(/g, '{:url('],
 ];
+
+module.exports = {
+    config: config,
+    list: list
+}

@@ -1,11 +1,7 @@
 //加载配置
-let replaceList = require('./wechat.js');
-
-// 基本设置
-let config = {
-    baseDir : '/Volumes/env/ydkos/application/mobile/view/pub/', //替换的目录或文件
-    recusion: true,     //递归目录
-}
+const replaces = require('./wechat.js');
+let config = replaces.config;
+let replaceList = replaces.list;
 
 const fs = require('fs');
 

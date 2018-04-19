@@ -1,7 +1,14 @@
 /*
 * 后台需要替换的字段，需要注意顺序的优先级
 */ 
-module.exports = [
+
+// 基本设置
+let config = {
+    baseDir : '/Volumes/env/ydkos/application/mobile/view/media/', //替换的目录或文件
+    recusion: true,     //递归目录
+}
+
+let list = [
     //删除
 
     //通用
@@ -22,3 +29,8 @@ module.exports = [
     [/{\$/g, '{\\$'],
     [/{:U\(/g, '{:url('],
 ];
+
+module.exports = {
+    config: config,
+    list: list
+}
