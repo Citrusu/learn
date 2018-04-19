@@ -1,9 +1,9 @@
 //加载配置
-let replaceList = require('./admin.js');
+let replaceList = require('./wechat.js');
 
 // 基本设置
 let config = {
-    baseDir : '/Volumes/env/ydkos/application/admin/view/company/', //替换目录
+    baseDir : '/Volumes/env/ydkos/application/mobile/view/pub/', //替换的目录或文件
     recusion: true,     //递归目录
 }
 
@@ -34,7 +34,6 @@ function readDir(dir){
         })
     });
 }
-readDir(config.baseDir)
 
 /*
  * 读取文件
@@ -69,3 +68,15 @@ function useFile(fileData, dist){
 }
 
 
+// 判断是否为目录
+fs.lstat(config.baseDir, (err, stats) => {
+    if(err){
+        console.log(`firstlstatErr:${err}`)
+    }
+    // 是否为目录
+    if(stats.isDirectory()){
+        readDir(config.baseDir);
+    }else{
+        readFile(config.baseDir);
+    }
+})
