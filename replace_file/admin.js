@@ -1,11 +1,11 @@
 /*
-* 后台需要替换的字段，需要注意顺序的优先级
-*/ 
+ * 后台需要替换的字段，需要注意顺序的优先级
+ */
 
 // 基本设置
 let config = {
-    baseDir : '/Volumes/env/ydkos/application/mobile/view/find/index.html', //替换的目录或文件
-    recusion: true,     //递归目录
+    baseDir: '/Volumes/env/ydkos/application/admin/view/product/', //替换的目录或文件
+    recusion: true, //递归目录
 }
 
 let list = [

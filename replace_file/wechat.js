@@ -1,18 +1,18 @@
 /*
-* 后台需要替换的字段，需要注意顺序的优先级
-*/ 
+ * 后台需要替换的字段，需要注意顺序的优先级
+ */
 
 // 基本设置
 let config = {
-    baseDir : '/Volumes/env/ydkos/application/mobile/view/media/', //替换的目录或文件
-    recusion: true,     //递归目录
+    baseDir: '/Volumes/env/ydkos/application/mobile/view/integral/', //替换的目录或文件
+    recusion: true, //递归目录
 }
 
 let list = [
     //删除
 
     //通用
-    
+
 
     //特殊
     // [/__PUBLIC__\/Plugins\/LhgDialog/g, '__STATIC__/admin/plugins/lhgDialog'],
