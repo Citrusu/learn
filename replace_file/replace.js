@@ -1,28 +1,28 @@
 //加载配置
-const replaces = require('./wechat.js');
+const replaces = require('./static.js');
 let config = replaces.config;
 let replaceList = replaces.list;
 
 const fs = require('fs');
 
 // 读取文件列表
-function readDir(dir){
+function readDir(dir) {
     fs.readdir(dir, (err, files) => {
-        if(err){
+        if (err) {
             console.log(`readErr:${err}`)
         }
         files.forEach((n) => {
             fs.lstat(dir + n, (err, stats) => {
-                if(err){
+                if (err) {
                     console.log(`lstatErr:${err}`)
                 }
                 // 是否为目录
-                if(stats.isDirectory()){
+                if (stats.isDirectory()) {
                     // 是否递归
-                    if(config.recusion){
+                    if (config.recusion) {
                         readDir(dir + n + '/');
                     }
-                }else{
+                } else {
                     // console.log(dir + n);
                     readFile(dir + n);
                 }
@@ -34,11 +34,11 @@ function readDir(dir){
 /*
  * 读取文件
  * */
-function readFile(src){
+function readFile(src) {
     fs.readFile(src, 'utf-8', (err, data) => {
-        if(err){
+        if (err) {
             console.log(err);
-        }else{
+        } else {
             // console.log(data);
             let replaceFile = data;
             replaceList.forEach((n, i) => {
@@ -53,9 +53,9 @@ function readFile(src){
 /*
  * 替换文件
  * */
-function useFile(fileData, dist){
+function useFile(fileData, dist) {
     fs.writeFile(dist, fileData, (err) => {
-        if(err){
+        if (err) {
             return console.log(err);
         }
 
@@ -66,13 +66,13 @@ function useFile(fileData, dist){
 
 // 判断是否为目录
 fs.lstat(config.baseDir, (err, stats) => {
-    if(err){
+    if (err) {
         console.log(`firstlstatErr:${err}`)
     }
     // 是否为目录
-    if(stats.isDirectory()){
+    if (stats.isDirectory()) {
         readDir(config.baseDir);
-    }else{
+    } else {
         readFile(config.baseDir);
     }
 })
